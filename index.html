@@ -1,1 +1,624 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171615">
+  <meta name="description" content="Perry Intimates. Intimacy, Elevated. Discover a considered collection of intimate wellness essentials for adults.">
+  <title>Perry Intimates | Intimacy, Elevated.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #171615;
+      --ivory: #f6f0e8;
+      --gold: #b69a70;
+      --nude: #e6ddd2;
+      --white: #fffdf9;
+      --muted: #766f68;
+      --line: rgba(23, 22, 21, .14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--black);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .announcement {
+      padding: 9px 16px;
+      background: var(--black);
+      color: var(--ivory);
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(246, 240, 232, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      max-width: 1240px;
+      min-height: 88px;
+      margin: auto;
+      padding: 12px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      min-width: 110px;
+    }
+
+    .brand img {
+      width: 145px;
+      max-height: 65px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 12px;
+    }
+
+    .nav-links a { transition: color .2s; }
+    .nav-links a:hover { color: #987b51; }
+
+    .nav-shop {
+      border: 1px solid var(--black);
+      padding: 10px 17px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      min-height: 570px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--nude);
+    }
+
+    .hero-copy {
+      padding: 90px 9% 90px 12%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      color: #8d7049;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 400;
+      line-height: 1.12;
+    }
+
+    h1 {
+      max-width: 520px;
+      font-size: clamp(43px, 5.2vw, 72px);
+      letter-spacing: -1.5px;
+    }
+
+    .hero-copy p {
+      max-width: 390px;
+      margin: 24px 0 30px;
+      color: #5f5851;
+      font-size: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--black);
+      color: var(--white);
+      padding: 15px 25px;
+      border: 1px solid var(--black);
+      font-size: 11px;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      transition: background .2s, color .2s;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: transparent;
+      color: var(--black);
+    }
+
+    .hero-visual {
+      min-height: 430px;
+      background:
+        linear-gradient(135deg, rgba(23,22,21,.04), rgba(23,22,21,.16)),
+        url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=85")
+        center / cover no-repeat;
+    }
+
+    .trust-strip {
+      padding: 20px 5%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px 45px;
+      border-bottom: 1px solid var(--line);
+      font-size: 10px;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .section {
+      max-width: 1240px;
+      margin: auto;
+      padding: 88px 5%;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 4vw, 46px);
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .collection-card {
+      min-height: 290px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: #d9cbbd;
+    }
+
+    .collection-card:nth-child(2) { background: #c7b8a9; }
+    .collection-card:nth-child(3) { background: #b8a18c; }
+
+    .collection-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 30%, rgba(23,22,21,.72));
+      z-index: 1;
+    }
+
+    .collection-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+
+    .collection-card:hover img { transform: scale(1.04); }
+
+    .collection-info {
+      position: relative;
+      z-index: 2;
+      color: white;
+      padding: 25px;
+    }
+
+    .collection-info h3 { font-size: 27px; margin-bottom: 8px; }
+    .collection-info span { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
+
+    .products-section { background: var(--white); }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-image {
+      aspect-ratio: 4 / 5;
+      background: var(--nude);
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+
+    .product-card:hover .product-image img { transform: scale(1.04); }
+
+    .product-info { padding: 15px 0; }
+    .product-info h3 { font-size: 19px; margin-bottom: 5px; }
+    .product-info p { color: var(--muted); font-size: 12px; }
+    .product-price { display: block; margin-top: 9px; font-size: 13px; font-weight: 600; }
+
+    .note {
+      max-width: 650px;
+      margin: 25px auto 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .brand-story {
+      background: var(--black);
+      color: var(--ivory);
+      text-align: center;
+      padding: 90px 7%;
+    }
+
+    .brand-story .eyebrow { color: var(--gold); }
+
+    .brand-story h2 {
+      max-width: 680px;
+      margin: 0 auto 22px;
+      font-size: clamp(34px, 4.5vw, 52px);
+    }
+
+    .brand-story p {
+      max-width: 570px;
+      margin: auto;
+      color: #d0c6bb;
+      font-size: 13px;
+    }
+
+    .story-button {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 13px 23px;
+      border: 1px solid var(--gold);
+      color: var(--ivory);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .newsletter {
+      text-align: center;
+      padding: 75px 5%;
+    }
+
+    .newsletter h2 { font-size: 36px; margin-bottom: 12px; }
+    .newsletter p { max-width: 500px; margin: 0 auto 22px; color: var(--muted); font-size: 13px; }
+
+    footer {
+      background: #11100f;
+      color: var(--ivory);
+      padding: 55px 5% 22px;
+    }
+
+    .footer-grid {
+      max-width: 1150px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 45px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand img {
+      width: 150px;
+      max-height: 70px;
+      object-fit: contain;
+      object-position: left center;
+      margin-bottom: 15px;
+      background: var(--ivory);
+      padding: 5px;
+    }
+
+    .footer-brand p {
+      max-width: 300px;
+      color: #bcb3a9;
+      font-size: 12px;
+    }
+
+    footer h3 {
+      font-family: "DM Sans", sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .footer-links { display: grid; gap: 10px; }
+    .footer-links a { color: #c9c0b7; font-size: 12px; }
+    .footer-links a:hover { color: var(--gold); }
+
+    .copyright {
+      max-width: 1150px;
+      margin: auto;
+      padding-top: 20px;
+      border-top: 1px solid #3a3733;
+      color: #a9a097;
+      font-size: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 800px) {
+      .nav { min-height: 74px; padding: 10px 5%; }
+      .brand img { width: 115px; }
+      .nav-links { gap: 13px; font-size: 11px; }
+      .nav-shop { padding: 8px 10px; font-size: 9px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { padding: 65px 8%; }
+      .hero-visual { min-height: 360px; }
+      .collection-grid { grid-template-columns: 1fr 1fr; }
+      .collection-card:last-child { grid-column: 1 / -1; }
+      .product-grid { grid-template-columns: 1fr 1fr; gap: 22px 14px; }
+      .section { padding: 65px 5%; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 430px) {
+      .nav { gap: 8px; }
+      .brand img { width: 90px; }
+      .nav-links { gap: 10px; }
+      .nav-links a { font-size: 10px; }
+      .nav-links .hide-small { display: none; }
+      .nav-shop { padding: 8px; letter-spacing: .5px; }
+      .hero-copy { padding: 55px 7%; }
+      .hero-visual { min-height: 300px; }
+      .trust-strip { gap: 12px 18px; font-size: 9px; }
+      .collection-grid { grid-template-columns: 1fr; }
+      .collection-card:last-child { grid-column: auto; }
+      .collection-card { min-height: 280px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .copyright { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    A more considered approach to intimate wellness
+  </div>
+
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Perry Intimates home">
+        <img src="file_000000003c1c8246ab1c96b1d7729e3d.png" alt="Perry Intimates logo">
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#collections">Collections</a>
+        <a class="hide-small" href="#about">Our Story</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a class="nav-shop" href="#products">Shop now</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">Welcome to Perry Intimates</span>
+        <h1>Intimacy, on your own terms.</h1>
+        <p>
+          Discover a more personal approach to pleasure and intimate wellness.
+          Thoughtfully selected essentials, with your comfort and privacy in mind.
+        </p>
+        <a class="button" href="#collections">Explore the collection</a>
+      </div>
+      <div class="hero-visual" role="img" aria-label="Elegant, warm-toned interior inspiration"></div>
+    </section>
+
+    <div class="trust-strip">
+      <span>Discreet by design</span>
+      <span>Adults only · 18+</span>
+      <span>Customer care</span>
+      <span>Thoughtful selection</span>
+    </div>
+
+    <section class="section" id="collections">
+      <div class="section-heading">
+        <span class="eyebrow">Find your preference</span>
+        <h2>Explore our world</h2>
+        <p>A more personal collection, designed around individual preferences.</p>
+      </div>
+
+      <div class="collection-grid">
+        <a class="collection-card" href="#products">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Warm, elegant interior details" loading="lazy">
+          <div class="collection-info">
+            <h3>For Her</h3>
+            <span>Explore selection ↗</span>
+          </div>
+        </a>
+
+        <a class="collection-card" href="#products">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Refined, contemporary interior styling" loading="lazy">
+          <div class="collection-info">
+            <h3>For Him</h3>
+            <span>Explore selection ↗</span>
+          </div>
+        </a>
+
+        <a class="collection-card" href="#products">
+          <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=800&q=80" alt="Soft neutral tones and considered design" loading="lazy">
+          <div class="collection-info">
+            <h3>For Couples</h3>
+            <span>Explore selection ↗</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="products-section" id="products">
+      <div class="section">
+        <div class="section-heading">
+          <span class="eyebrow">The edit</span>
+          <h2>Discover the collection</h2>
+          <p>Our product selection will be featured here.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=700&q=80" alt="Minimal product still life" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3>Intimate Essential</h3>
+              <p>Personal wellness</p>
+              <span class="product-price">Price to be added</span>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80" alt="Elegant neutral-toned product still life" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3>Everyday Indulgence</h3>
+              <p>Intimate wellness</p>
+              <span class="product-price">Price to be added</span>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=700&q=80" alt="Soft-toned lifestyle product styling" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3>Personal Favourite</h3>
+              <p>Explore your preferences</p>
+              <span class="product-price">Price to be added</span>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=700&q=80" alt="Curated product presentation" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3>The Signature Edit</h3>
+              <p>Discover something new</p>
+              <span class="product-price">Price to be added</span>
+            </div>
+          </article>
+        </div>
+
+        <p class="note">
+          These are design placeholders, not confirmed products for sale.
+          Product images, names, descriptions and NGN prices will be replaced
+          with verified details before launch.
+        </p>
+      </div>
+    </section>
+
+    <section class="brand-story" id="about">
+      <span class="eyebrow">The Perry Intimates philosophy</span>
+      <h2>Your comfort. Your curiosity. Your choice.</h2>
+      <p>
+        We believe intimate wellness deserves thoughtful attention, clear
+        information and a judgement-free experience. Perry Intimates is being
+        created to help adults explore their preferences with confidence.
+      </p>
+      <a class="story-button" href="#contact">Get in touch</a>
+    </section>
+
+    <section class="newsletter">
+      <span class="eyebrow">Stay connected</span>
+      <h2>A little more intimacy.</h2>
+      <p>
+        Have a question about our upcoming collection? Contact us for assistance
+        with product enquiries and availability.
+      </p>
+      <a class="button" href="#contact">Contact Perry Intimates</a>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="file_000000003c1c8246ab1c96b1d7729e3d.png" alt="Perry Intimates logo">
+        <p>
+          A considered approach to intimate wellness.
+          Intimacy, Elevated.
+        </p>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <div class="footer-links">
+          <a href="#collections">Collections</a>
+          <a href="#products">Featured selection</a>
+          <a href="#about">Our story</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Customer care</h3>
+        <div class="footer-links">
+          <a href="mailto:hello@perryintimates.com">Email us</a>
+          <a href="#contact">Delivery information</a>
+          <a href="#contact">Privacy &amp; discretion</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <span>© <span id="year"></span> Perry Intimates. All rights reserved.</span>
+      <span>For adults aged 18 and over.</span>
+      <span>Intimacy, Elevated.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+    </html>
+  
