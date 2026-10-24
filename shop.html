@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore Perry Intimates, a considered approach to intimate wellness. Intimacy, Elevated.">
+  <meta name="description" content="Discover intimate wellness at Perry Intimates. Explore the Rose Sucking & Stimulation in multiple colours. Intimacy, Elevated.">
   <meta name="theme-color" content="#F6F0E8">
   <title>Shop | Perry Intimates</title>
 
@@ -23,9 +23,13 @@
       --line: #DED5CA;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -93,7 +97,7 @@
     }
 
     .page-intro {
-      padding: 86px 20px 65px;
+      padding: 76px 20px 48px;
       text-align: center;
     }
 
@@ -113,8 +117,8 @@
     }
 
     h1 {
-      margin: 0 0 20px;
-      font-size: clamp(42px, 7vw, 72px);
+      margin: 0 0 18px;
+      font-size: clamp(42px, 7vw, 68px);
     }
 
     .intro-copy {
@@ -125,72 +129,105 @@
     }
 
     .catalogue {
-      max-width: 1000px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 0 6% 100px;
     }
 
-    .catalogue-panel {
-      position: relative;
-      min-height: 360px;
-      padding: 64px 28px;
-      overflow: hidden;
-      display: flex;
+    .product-card {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
       align-items: center;
-      justify-content: center;
-      background: var(--nude);
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .product-gallery {
+      min-width: 0;
+    }
+
+    .product-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      min-height: 230px;
+      max-height: 440px;
+      display: block;
+      object-fit: contain;
+      background: var(--ivory);
+    }
+
+    .image-caption {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 10px;
       text-align: center;
+      letter-spacing: 0.5px;
     }
 
-    .catalogue-panel::before,
-    .catalogue-panel::after {
-      position: absolute;
-      width: 190px;
-      height: 190px;
-      border: 1px solid rgba(182, 154, 112, 0.45);
-      border-radius: 50%;
-      content: "";
-      pointer-events: none;
+    .product-details {
+      padding: 18px 8px;
     }
 
-    .catalogue-panel::before {
-      top: -100px;
-      left: -75px;
+    .product-details h2 {
+      margin: 0 0 16px;
+      font-size: clamp(30px, 4vw, 43px);
     }
 
-    .catalogue-panel::after {
-      right: -85px;
-      bottom: -110px;
-      width: 250px;
-      height: 250px;
+    .product-price {
+      margin: 0 0 22px;
+      color: var(--gold);
+      font-size: 27px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
     }
 
-    .catalogue-content {
-      position: relative;
-      z-index: 1;
-      max-width: 560px;
-    }
-
-    .catalogue-content h2 {
-      margin: 0 0 18px;
-      font-size: clamp(32px, 5vw, 48px);
-    }
-
-    .catalogue-content .description {
-      max-width: 470px;
-      margin: 0 auto 25px;
+    .product-description {
+      margin: 0 0 24px;
       color: var(--muted);
       font-size: 13px;
     }
 
+    .detail-label {
+      margin: 0 0 10px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .colour-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 28px;
+    }
+
+    .colour {
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      background: var(--ivory);
+      font-size: 11px;
+    }
+
     .button {
-      min-height: 47px;
-      padding: 13px 23px;
+      min-height: 48px;
+      width: 100%;
+      padding: 14px 20px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: var(--black);
       color: var(--ivory);
+      text-align: center;
       font-size: 10px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -201,9 +238,16 @@
       background: #39332D;
     }
 
-    .note {
-      max-width: 560px;
-      margin: 24px auto 0;
+    .product-note {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .catalogue-note {
+      max-width: 600px;
+      margin: 28px auto 0;
       color: var(--muted);
       font-size: 12px;
       text-align: center;
@@ -272,7 +316,9 @@
         gap: 17px;
       }
 
-      .logo { width: 135px; }
+      .logo {
+        width: 135px;
+      }
 
       .nav-links {
         justify-content: center;
@@ -282,16 +328,26 @@
       }
 
       .page-intro {
-        padding: 65px 20px 48px;
+        padding: 58px 20px 38px;
       }
 
       .catalogue {
         padding: 0 5% 70px;
       }
 
-      .catalogue-panel {
-        min-height: 330px;
-        padding: 48px 22px;
+      .product-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 16px;
+      }
+
+      .product-image {
+        min-height: 190px;
+        max-height: 360px;
+      }
+
+      .product-details {
+        padding: 8px 2px 12px;
       }
 
       .footer-inner {
@@ -305,8 +361,21 @@
     }
 
     @media (max-width: 380px) {
-      .footer-inner { grid-template-columns: 1fr; }
-      .footer-brand { grid-column: auto; }
+      .product-images {
+        gap: 7px;
+      }
+
+      .product-image {
+        min-height: 150px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
     }
   </style>
 </head>
@@ -340,29 +409,78 @@
       <p class="eyebrow">Discover Perry Intimates</p>
       <h1>The Collection</h1>
       <p class="intro-copy">
-        Intimate wellness, approached with care. Explore a more confident,
-        comfortable and personal relationship with yourself.
+        Intimate wellness, approached with care. Discover our available
+        products and find the option that feels right for you.
       </p>
     </section>
 
-    <section class="catalogue" aria-labelledby="collection-title">
-      <div class="catalogue-panel">
-        <div class="catalogue-content">
-          <p class="eyebrow">Selected with intention</p>
-          <h2 id="collection-title">Our collection is taking shape.</h2>
-          <p class="description">
-            We’re preparing our product selection with care. The pieces
-            featured here will be real Perry Intimates products, with
-            accurate photos and details, not stock images or placeholder listings.
-          </p>
-          <a class="button" href="https://wa.me/2347032620233">
-            Enquire on WhatsApp
-          </a>
-        </div>
-      </div>
+    <section class="catalogue" aria-label="Available products">
+      <article class="product-card">
+        <div class="product-gallery">
+          <div class="product-images">
+            <div>
+              <img
+                class="product-image"
+                src="IMG_20261024_064836_723.jpg"
+                alt="Rose Sucking and Stimulation product in rose pink"
+                loading="lazy"
+              >
+              <p class="image-caption">Product view</p>
+            </div>
 
-      <p class="note">
-        Have a question in the meantime? Get in touch and we’ll be happy to help.
+            <div>
+              <img
+                class="product-image"
+                src="IMG_20261024_064841_040.jpg"
+                alt="Rose Sucking and Stimulation colour options"
+                loading="lazy"
+              >
+              <p class="image-caption">Available colour options</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-details">
+          <p class="eyebrow">Perry Intimates</p>
+          <h2>Rose Sucking &amp; Stimulation</h2>
+
+          <p class="product-price">₦33,000</p>
+
+          <p class="product-description">
+            A rose-inspired intimate pleasure product available in a range
+            of colours. Contact us to confirm your preferred colour and
+            arrange your order.
+          </p>
+
+          <p class="detail-label">Available colours</p>
+
+          <div class="colour-list">
+            <span class="colour">Red</span>
+            <span class="colour">Rose Pink</span>
+            <span class="colour">Black</span>
+            <span class="colour">Yellow</span>
+            <span class="colour">Sky Blue</span>
+            <span class="colour">Purple</span>
+          </div>
+
+          <a
+            class="button"
+            href="https://wa.me/2347032620233?text=Hello%20Perry%20Intimates%2C%20I%27m%20interested%20in%20the%20Rose%20Sucking%20%26%20Stimulation%20priced%20at%20%E2%82%A633%2C000.%20Please%20help%20me%20place%20an%20order."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Enquire or Order on WhatsApp
+          </a>
+
+          <p class="product-note">
+            Ask us about your preferred colour before ordering.
+          </p>
+        </div>
+      </article>
+
+      <p class="catalogue-note">
+        More products will be added as they become available.
+        For enquiries, please contact Perry Intimates directly.
       </p>
     </section>
   </main>
@@ -408,7 +526,8 @@
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
   </script>
 </body>
   </html>
