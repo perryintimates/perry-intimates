@@ -2,533 +2,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover intimate wellness at Perry Intimates. Explore the Rose Sucking & Stimulation in multiple colours. Intimacy, Elevated.">
-  <meta name="theme-color" content="#F6F0E8">
-  <title>Shop | Perry Intimates</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --black: #171615;
-      --ivory: #F6F0E8;
-      --gold: #B69A70;
-      --nude: #E6DDD2;
-      --white: #FFFDF9;
-      --muted: #766F68;
-      --line: #DED5CA;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--ivory);
-      color: var(--black);
-      font-family: "DM Sans", sans-serif;
-      line-height: 1.7;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .announcement {
-      padding: 9px 16px;
-      background: var(--black);
-      color: var(--ivory);
-      text-align: center;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    header {
-      background: var(--ivory);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      max-width: 1200px;
-      min-height: 88px;
-      margin: auto;
-      padding: 15px 6%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      display: block;
-      width: 155px;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .nav-links a:hover,
-    footer a:hover {
-      color: var(--gold);
-    }
-
-    .nav-links .active {
-      padding-bottom: 5px;
-      border-bottom: 1px solid var(--gold);
-    }
-
-    .page-intro {
-      padding: 76px 20px 48px;
-      text-align: center;
-    }
-
-    .eyebrow {
-      margin: 0 0 14px;
-      color: var(--gold);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    h1, h2, h3 {
-      font-family: "Playfair Display", serif;
-      font-weight: 400;
-      line-height: 1.2;
-    }
-
-    h1 {
-      margin: 0 0 18px;
-      font-size: clamp(42px, 7vw, 68px);
-    }
-
-    .intro-copy {
-      max-width: 550px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .catalogue {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 6% 100px;
-    }
-
-    .product-card {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
-      align-items: center;
-      padding: 28px;
-      background: var(--white);
-      border: 1px solid var(--line);
-    }
-
-    .product-gallery {
-      min-width: 0;
-    }
-
-    .product-images {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      align-items: stretch;
-    }
-
-    .product-image {
-      width: 100%;
-      height: 100%;
-      min-height: 230px;
-      max-height: 440px;
-      display: block;
-      object-fit: contain;
-      background: var(--ivory);
-    }
-
-    .image-caption {
-      margin: 9px 0 0;
-      color: var(--muted);
-      font-size: 10px;
-      text-align: center;
-      letter-spacing: 0.5px;
-    }
-
-    .product-details {
-      padding: 18px 8px;
-    }
-
-    .product-details h2 {
-      margin: 0 0 16px;
-      font-size: clamp(30px, 4vw, 43px);
-    }
-
-    .product-price {
-      margin: 0 0 22px;
-      color: var(--gold);
-      font-size: 27px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-    }
-
-    .product-description {
-      margin: 0 0 24px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .detail-label {
-      margin: 0 0 10px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-    }
-
-    .colour-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 0 0 28px;
-    }
-
-    .colour {
-      padding: 7px 11px;
-      border: 1px solid var(--line);
-      background: var(--ivory);
-      font-size: 11px;
-    }
-
-    .button {
-      min-height: 48px;
-      width: 100%;
-      padding: 14px 20px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--black);
-      color: var(--ivory);
-      text-align: center;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      transition: background 0.2s;
-    }
-
-    .button:hover {
-      background: #39332D;
-    }
-
-    .product-note {
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 11px;
-      text-align: center;
-    }
-
-    .catalogue-note {
-      max-width: 600px;
-      margin: 28px auto 0;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: center;
-    }
-
-    footer {
-      padding: 55px 6% 25px;
-      background: var(--black);
-      color: var(--ivory);
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 40px;
-    }
-
-    .footer-logo {
-      width: 145px;
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-    }
-
-    .footer-brand p {
-      max-width: 270px;
-      color: #C5BDB4;
-      font-size: 12px;
-    }
-
-    footer h3 {
-      margin: 5px 0 18px;
-      font-family: "DM Sans", sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      color: #C5BDB4;
-      font-size: 12px;
-    }
-
-    .copyright {
-      max-width: 1100px;
-      margin: 40px auto 0;
-      padding-top: 20px;
-      border-top: 1px solid #393634;
-      color: #A8A099;
-      font-size: 10px;
-      text-align: center;
-    }
-
-    @media (max-width: 760px) {
-      .nav {
-        min-height: auto;
-        padding: 18px 5%;
-        flex-direction: column;
-        gap: 17px;
-      }
-
-      .logo {
-        width: 135px;
-      }
-
-      .nav-links {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px 20px;
-        font-size: 10px;
-      }
-
-      .page-intro {
-        padding: 58px 20px 38px;
-      }
-
-      .catalogue {
-        padding: 0 5% 70px;
-      }
-
-      .product-card {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 16px;
-      }
-
-      .product-image {
-        min-height: 190px;
-        max-height: 360px;
-      }
-
-      .product-details {
-        padding: 8px 2px 12px;
-      }
-
-      .footer-inner {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px 20px;
-      }
-
-      .footer-brand {
-        grid-column: 1 / -1;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .product-images {
-        gap: 7px;
-      }
-
-      .product-image {
-        min-height: 150px;
-      }
-
-      .footer-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-brand {
-        grid-column: auto;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F6F0E8">
+<meta name="description" content="Shop Perry Intimates. Intimacy, Elevated.">
+<title>Shop | Perry Intimates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#171615;--ivory:#F6F0E8;--gold:#B69A70;--white:#FFFDF9;--muted:#766F68;--line:#DED5CA}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);color:var(--black);font-family:"DM Sans",sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+.announcement{background:var(--black);color:var(--ivory);text-align:center;padding:9px;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+nav{max-width:1150px;margin:auto;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}
+.logo{width:145px;height:auto}
+.navlinks{display:flex;gap:22px;align-items:center;flex-wrap:wrap;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.navlinks a:hover{color:var(--gold)}
+.cartlink{border:1px solid var(--gold);padding:7px 11px}
+.intro{text-align:center;padding:60px 20px 35px}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700}
+h1,h2,h3{font-family:"Playfair Display",serif;font-weight:400;line-height:1.2}
+h1{font-size:clamp(40px,6vw,62px);margin:10px 0}
+.intro p:last-child{max-width:550px;margin:auto;color:var(--muted);font-size:13px}
+.layout{max-width:1150px;margin:auto;padding:0 5% 85px;display:grid;grid-template-columns:1.1fr .9fr;gap:25px;align-items:start}
+.panel{background:var(--white);border:1px solid var(--line);padding:22px;min-width:0}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gallery img{width:100%;height:100%;min-height:200px;max-height:420px;object-fit:contain;background:var(--ivory)}
+.caption{text-align:center;font-size:10px;color:var(--muted)}
+.details{padding-top:20px}
+h2{font-size:clamp(28px,3.5vw,39px);margin:5px 0 10px}
+.price{font-size:26px;font-weight:700;color:var(--gold);margin:10px 0}
+.description,.muted{font-size:12px;color:var(--muted)}
+.label{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin:15px 0 7px}
+.field{display:block;width:100%;min-height:44px;border:1px solid var(--line);background:white;padding:10px 12px;border-radius:0;color:var(--black)}
+.field:focus{outline:2px solid var(--gold);outline-offset:1px}
+.qty{max-width:100px}
+.btn{width:100%;min-height:47px;padding:13px 16px;border:1px solid var(--black);background:var(--black);color:white;cursor:pointer;text-transform:uppercase;letter-spacing:1.4px;font-size:10px;font-weight:700}
+.btn:hover{background:#39332D}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.status{font-size:12px;overflow-wrap:anywhere}
+.success{color:#356b45}.error{color:#9c3027}
+.carthead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}
+.carthead h2{font-size:29px;margin:0}
+.empty{font-size:13px;color:var(--muted);padding:15px 0}
+.cartitem{display:grid;grid-template-columns:1fr auto;gap:10px;padding:15px 0;border-bottom:1px solid var(--line)}
+.itemname{font-size:13px;font-weight:700}
+.itemmeta{font-size:11px;color:var(--muted)}
+.controls{display:flex;align-items:center;gap:8px;margin-top:7px}
+.controls input{width:60px;padding:6px;border:1px solid var(--line)}
+.remove{background:none;border:0;text-decoration:underline;color:var(--muted);font-size:11px;cursor:pointer}
+.lineprice{font-size:13px;font-weight:700;white-space:nowrap}
+.total{display:flex;justify-content:space-between;gap:12px;padding:17px 0;border-bottom:1px solid var(--line);font-size:13px}
+.total strong{font-size:17px}
+.checkout{padding-top:20px}
+.checkout h3{font-size:28px;margin:0}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wide{grid-column:1/-1}
+.notice{background:var(--ivory);padding:12px;font-size:11px;color:var(--muted);margin:15px 0}
+footer{background:var(--black);color:var(--ivory);padding:45px 6% 22px}
+.footgrid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+.footlogo{width:135px;max-width:100%}
+footer h3{font-family:"DM Sans",sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1.5px}
+.footlinks{display:flex;flex-direction:column;gap:8px;font-size:12px;color:#C5BDB4}
+.footbrand p{font-size:12px;color:#C5BDB4}
+.copyright{max-width:1100px;margin:30px auto 0;border-top:1px solid #393634;padding-top:18px;text-align:center;font-size:10px;color:#A8A099}
+@media(max-width:800px){nav{flex-direction:column}.navlinks{justify-content:center;gap:12px 16px}.layout{grid-template-columns:1fr;max-width:680px}.gallery img{min-height:170px}}
+@media(max-width:480px){.panel{padding:14px}.gallery{gap:6px}.gallery img{min-height:145px}.formgrid{grid-template-columns:1fr}.wide{grid-column:auto}.footgrid{grid-template-columns:1fr 1fr;gap:22px 15px}.footbrand{grid-column:1/-1}}
+</style>
 </head>
-
 <body>
-  <div class="announcement">
-    Perry Intimates · Intimacy, Elevated.
-  </div>
+<div class="announcement">Perry Intimates · Intimacy, Elevated.</div>
+<nav aria-label="Main navigation">
+<a href="index.html"><img class="logo" src="file_000000003c1c8246ab1c96b1d7729e3d.png" alt="Perry Intimates"></a>
+<div class="navlinks">
+<a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+<a class="cartlink" href="#cart">Cart (<span id="navcount">0</span>)</a>
+</div>
+</nav>
+<main>
+<section class="intro">
+<p class="eyebrow">The Perry Intimates Shop</p>
+<h1>Shop with confidence.</h1>
+<p>Choose your preferred colour, add your item to the cart and review your order below.</p>
+</section>
 
-  <header>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" aria-label="Perry Intimates home">
-        <img
-          class="logo"
-          src="file_000000003c1c8246ab1c96b1d7729e3d.png"
-          alt="Perry Intimates logo"
-        >
-      </a>
+<section class="layout">
+<article class="panel">
+<div class="gallery">
+<div><img src="IMG_20261024_064836_723.jpg" alt="Rose Sucking and Stimulation product"><p class="caption">Product view</p></div>
+<div><img src="IMG_20261024_064841_040.jpg" alt="Available product colours"><p class="caption">Colour options</p></div>
+</div>
+<div class="details">
+<p class="eyebrow">Available product</p>
+<h2>Rose Sucking &amp; Stimulation</h2>
+<p class="price">₦33,000</p>
+<p class="description">A rose-inspired intimate pleasure product available in six colours.</p>
+<label class="label" for="colour">Choose a colour</label>
+<select class="field" id="colour">
+<option>Red</option><option>Rose Pink</option><option>Black</option><option>Yellow</option><option>Sky Blue</option><option>Purple</option>
+</select>
+<label class="label" for="quantity">Quantity</label>
+<input class="field qty" id="quantity" type="number" min="1" max="20" value="1">
+<p class="muted">₦33,000 per item. Delivery is calculated separately.</p>
+<button class="btn" id="add" type="button">Add to Cart</button>
+<p id="productstatus" class="status" aria-live="polite"></p>
+</div>
+</article>
 
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a class="active" href="shop.html" aria-current="page">Shop</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </nav>
-  </header>
+<aside class="panel" id="cart">
+<div class="carthead"><h2>Your Cart</h2><span class="muted"><span id="cartcount">0</span> item(s)</span></div>
+<div id="cartitems"><p class="empty">Your cart is empty. Add the product to begin.</p></div>
+<div class="total"><span>Item subtotal</span><strong id="subtotal">₦0</strong></div>
+<p class="muted">Delivery charges are not included and must be confirmed before payment.</p>
 
-  <main>
-    <section class="page-intro">
-      <p class="eyebrow">Discover Perry Intimates</p>
-      <h1>The Collection</h1>
-      <p class="intro-copy">
-        Intimate wellness, approached with care. Discover our available
-        products and find the option that feels right for you.
-      </p>
-    </section>
-
-    <section class="catalogue" aria-label="Available products">
-      <article class="product-card">
-        <div class="product-gallery">
-          <div class="product-images">
-            <div>
-              <img
-                class="product-image"
-                src="IMG_20261024_064836_723.jpg"
-                alt="Rose Sucking and Stimulation product in rose pink"
-                loading="lazy"
-              >
-              <p class="image-caption">Product view</p>
-            </div>
-
-            <div>
-              <img
-                class="product-image"
-                src="IMG_20261024_064841_040.jpg"
-                alt="Rose Sucking and Stimulation colour options"
-                loading="lazy"
-              >
-              <p class="image-caption">Available colour options</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-details">
-          <p class="eyebrow">Perry Intimates</p>
-          <h2>Rose Sucking &amp; Stimulation</h2>
-
-          <p class="product-price">₦33,000</p>
-
-          <p class="product-description">
-            A rose-inspired intimate pleasure product available in a range
-            of colours. Contact us to confirm your preferred colour and
-            arrange your order.
-          </p>
-
-          <p class="detail-label">Available colours</p>
-
-          <div class="colour-list">
-            <span class="colour">Red</span>
-            <span class="colour">Rose Pink</span>
-            <span class="colour">Black</span>
-            <span class="colour">Yellow</span>
-            <span class="colour">Sky Blue</span>
-            <span class="colour">Purple</span>
-          </div>
-
-          <a
-            class="button"
-            href="https://wa.me/2347032620233?text=Hello%20Perry%20Intimates%2C%20I%27m%20interested%20in%20the%20Rose%20Sucking%20%26%20Stimulation%20priced%20at%20%E2%82%A633%2C000.%20Please%20help%20me%20place%20an%20order."
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Enquire or Order on WhatsApp
-          </a>
-
-          <p class="product-note">
-            Ask us about your preferred colour before ordering.
-          </p>
-        </div>
-      </article>
-
-      <p class="catalogue-note">
-        More products will be added as they become available.
-        For enquiries, please contact Perry Intimates directly.
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html">
-          <img
-            class="footer-logo"
-            src="file_000000003c1c8246ab1c96b1d7729e3d.png"
-            alt="Perry Intimates"
-          >
-        </a>
-        <p>Intimacy, Elevated. A considered approach to intimate wellness.</p>
-      </div>
-
-      <div>
-        <h3>Explore</h3>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="shop.html">Shop</a>
-          <a href="about.html">About Us</a>
-          <a href="contact.html">Contact Us</a>
-        </div>
-      </div>
-
-      <div>
-        <h3>Information</h3>
-        <div class="footer-links">
-          <a href="shipping.html">Shipping &amp; Delivery</a>
-          <a href="returns.html">Returns &amp; Refunds</a>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms &amp; Conditions</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="copyright">
-      © <span id="year"></span> Perry Intimates. All rights reserved.
-      <br>Intimacy, Elevated.
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+<div class="checkout">
+<h3>Checkout</h3>
+<p class="muted">Enter your delivery details to review your order.</p>
+<form id="checkout">
+<div class="formgrid">
+<div><label class="label" for="fullname">Full name *</label><input class="field" id="fullname" name="fullname" autocomplete="name" required></div>
+<div><label class="label" for="email">Email address *</label><input class="field" id="email" name="email" type="email" autocomplete="email" required></div>
+<div><label class="label" for="phone">Phone number *</label><input class="field" id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+<div><label class="label" for="country">Country *</label><select class="field" id="country" name="country" required><option value="Nigeria">Nigeria</option><option value="Other country">Other country</option></select></div>
+<div class="wide"><label class="label" for="address">Delivery address *</label><textarea class="field" id="address" name="address" rows="3" autocomplete="street-address" required></textarea></div>
+<div><label class="label" for="state">State / Region *</label><input class="field" id="state" name="state" required></div>
+<div><label class="label" for="city">City / Town *</label><input class="field" id="city" name="city" required></div>
+<div class="wide"><label class="label" for="notes">Delivery notes (optional)</label><textarea class="field" id="notes" name="notes" rows="2"></textarea></div>
+</div>
+<div class="notice">Paystack has not been connected yet. This checkout can review your order, but it cannot accept payment or submit a confirmed order until secure payment and order processing are configured.</div>
+<button class="btn" type="submit">Review Order</button>
+<p class="status" id="checkoutstatus" aria-live="polite"></p>
+<div id="orderreview"></div>
+</form>
+</div>
+</aside>
+</section>
+</main>
+<footer>
+<div class="footgrid">
+<div class="footbrand"><a href="index.html"><img class="footlogo" src="file_000000003c1c8246ab1c96b1d7729e3d.png" alt="Perry Intimates"></a><p>Intimacy, Elevated. A considered approach to intimate wellness.</p></div>
+<div><h3>Explore</h3><div class="footlinks"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></div></div>
+<div><h3>Information</h3><div class="footlinks"><a href="shipping.html">Shipping &amp; Delivery</a><a href="returns.html">Returns &amp; Refunds</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="mailto:perryintimates@gmail.com">Email Us</a></div></div>
+</div>
+<div class="copyright">© <span id="year"></span> Perry Intimates. All rights reserved.</div>
+</footer>
+<script>
+(() => {
+"use strict";
+const KEY="perryIntimatesCartV1", ID="rose-sucking-stimulation", NAME="Rose Sucking & Stimulation", PRICE=33000;
+const colours=["Red","Rose Pink","Black","Yellow","Sky Blue","Purple"];
+const money=n=>new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN",maximumFractionDigits:0}).format(n);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let cart=[];
+try{const saved=JSON.parse(localStorage.getItem(KEY)||"[]");if(Array.isArray(saved))cart=saved.filter(x=>x&&x.id===ID&&colours.includes(x.colour)&&Number.isInteger(x.quantity)&&x.quantity>0&&x.quantity<=20)}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(cart))}catch(e){}};
+const count=()=>cart.reduce((s,x)=>s+x.quantity,0);
+const total=()=>cart.reduce((s,x)=>s+x.quantity*PRICE,0);
+function render(){
+document.getElementById("navcount").textContent=count();
+document.getElementById("cartcount").textContent=count();
+document.getElementById("subtotal").textContent=money(total());
+const host=document.getElementById("cartitems");
+if(!cart.length){host.innerHTML='<p class="empty">Your cart is empty. Add the product to begin.</p>';return}
+host.innerHTML=cart.map(x=>'<div class="cartitem"><div><div class="itemname">'+esc(NAME)+'</div><div class="itemmeta">Colour: '+esc(x.colour)+'</div><div class="controls"><label class="muted">Qty</label><input type="number" min="1" max="20" value="'+x.quantity+'" data-qty="'+esc(x.colour)+'" aria-label="Quantity '+esc(x.colour)+'"><button type="button" class="remove" data-remove="'+esc(x.colour)+'">Remove</button></div></div><div class="lineprice">'+money(x.quantity*PRICE)+'</div></div>').join("");
+host.querySelectorAll("[data-qty]").forEach(el=>el.addEventListener("change",()=>{let n=Number(el.value),item=cart.find(x=>x.colour===el.dataset.qty);if(!item)return;if(!Number.isInteger(n)||n<1||n>20){el.value=item.quantity;return}item.quantity=n;save();render()}));
+host.querySelectorAll("[data-remove]").forEach(el=>el.addEventListener("click",()=>{cart=cart.filter(x=>x.colour!==el.dataset.remove);save();render();document.getElementById("orderreview").innerHTML=""}));
+}
+document.getElementById("add").addEventListener("click",()=>{
+const colour=document.getElementById("colour").value,n=Number(document.getElementById("quantity").value),msg=document.getElementById("productstatus");
+if(!colours.includes(colour)||!Number.isInteger(n)||n<1||n>20){msg.className="status error";msg.textContent="Choose a colour and quantity from 1 to 20.";return}
+const item=cart.find(x=>x.colour===colour);
+if(item){if(item.quantity+n>20){msg.className="status error";msg.textContent="Maximum quantity per colour is 20.";return}item.quantity+=n}else cart.push({id:ID,name:NAME,colour,quantity:n});
+save();render();msg.className="status success";msg.textContent="Added to cart: "+colour+" × "+n+".";
+});
+document.getElementById("checkout").addEventListener("submit",e=>{
+e.preventDefault();
+const status=document.getElementById("checkoutstatus"),review=document.getElementById("orderreview");
+if(!cart.length){status.className="status error";status.textContent="Your cart is empty. Add the product before checkout.";return}
+if(!e.currentTarget.reportValidity())return;
+const f=new FormData(e.currentTarget),v=k=>String(f.get(k)||"").trim();
+status.className="status";
+status.textContent="Your details have been checked. This is an order review only, not a submitted or paid order. Online payment and secure order processing still need to be connected.";
+review.innerHTML='<div class="notice"><h3>Review your order</h3><p><strong>'+esc(v("fullname"))+'</strong></p><p>'+esc(v("email"))+' · '+esc(v("phone"))+'</p><p>'+esc(v("address"))+', '+esc(v("city"))+', '+esc(v("state"))+', '+esc(v("country"))+'</p>'+cart.map(x=>'<p>'+esc(NAME)+' · '+esc(x.colour)+' × '+x.quantity+' — <strong>'+money(x.quantity*PRICE)+'</strong></p>').join("")+'<hr><p><strong>Item subtotal: '+money(total())+'</strong></p><p>Delivery fee: to be confirmed</p><p class="muted">No payment has been taken and no order has been submitted.</p></div>';
+review.scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+render();
+})();
+</script>
 </body>
   </html>
-  
+                       
