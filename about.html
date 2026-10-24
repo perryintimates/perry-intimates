@@ -4,8 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover the philosophy behind Perry Intimates. Intimacy, Elevated.">
-  <title>About Us | Perry Intimates</title>
+
+  <meta name="description" content="Discover the philosophy behind Perry Intimates, an online store for intimate wellness essentials for adults. Thoughtful choices, personal comfort and discreet delivery.">
+
+  <meta property="og:site_name" content="Perry Intimates">
+  <meta property="og:title" content="Our Story | Perry Intimates">
+  <meta property="og:description" content="A more considered approach to intimate wellness. Discover the values behind Perry Intimates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://perryintimates.github.io/perry-intimates/about.html">
+  <meta property="og:image" content="https://perryintimates.github.io/perry-intimates/file_000000003c1c8246ab1c96b1d7729e3d.png">
+  <meta property="og:image:alt" content="Perry Intimates brand logo">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Our Story | Perry Intimates">
+  <meta name="twitter:description" content="A more considered approach to intimate wellness.">
+  <meta name="twitter:image" content="https://perryintimates.github.io/perry-intimates/file_000000003c1c8246ab1c96b1d7729e3d.png">
+
+  <meta name="theme-color" content="#171615">
+  <title>Our Story | Perry Intimates</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,9 +38,13 @@
       --line: #DED5CA;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -34,7 +54,10 @@
       line-height: 1.8;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .announcement {
       padding: 9px 16px;
@@ -46,7 +69,9 @@
       text-transform: uppercase;
     }
 
-    header { border-bottom: 1px solid var(--line); }
+    header {
+      border-bottom: 1px solid var(--line);
+    }
 
     .nav {
       max-width: 1200px;
@@ -75,7 +100,10 @@
       text-transform: uppercase;
     }
 
-    .nav-links a:hover, footer a:hover { color: var(--gold); }
+    .nav-links a:hover,
+    footer a:hover {
+      color: var(--gold);
+    }
 
     .nav-links .active {
       border-bottom: 1px solid var(--gold);
@@ -110,7 +138,7 @@
     }
 
     .hero p:last-child {
-      max-width: 600px;
+      max-width: 620px;
       margin: auto;
       color: #625B54;
       font-size: 14px;
@@ -182,6 +210,31 @@
       margin: 0;
       color: #C5BDB4;
       font-size: 13px;
+    }
+
+    .experience {
+      padding: 80px 6%;
+      background: #EEE5DA;
+    }
+
+    .experience-inner {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .experience h2 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 46px);
+    }
+
+    .experience-copy p {
+      margin: 0 0 18px;
+      color: #625B54;
+      font-size: 14px;
     }
 
     .closing {
@@ -280,7 +333,9 @@
         gap: 17px;
       }
 
-      .logo { width: 135px; }
+      .logo {
+        width: 135px;
+      }
 
       .nav-links {
         justify-content: center;
@@ -289,35 +344,52 @@
         font-size: 10px;
       }
 
-      .hero { padding: 70px 6%; }
+      .hero {
+        padding: 70px 6%;
+      }
 
-      .story { padding: 65px 6%; }
+      .story {
+        padding: 65px 6%;
+      }
 
-      .story-grid {
+      .story-grid,
+      .experience-inner {
         grid-template-columns: 1fr;
         gap: 25px;
       }
 
-      .values { padding: 65px 6%; }
+      .values,
+      .experience {
+        padding: 65px 6%;
+      }
 
       .values-grid {
         grid-template-columns: 1fr;
         gap: 28px;
       }
 
-      .closing { padding: 65px 6%; }
+      .closing {
+        padding: 65px 6%;
+      }
 
       .footer-inner {
         grid-template-columns: 1fr 1fr;
         gap: 30px 20px;
       }
 
-      .footer-brand { grid-column: 1 / -1; }
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
     }
 
     @media (max-width: 380px) {
-      .footer-inner { grid-template-columns: 1fr; }
-      .footer-brand { grid-column: auto; }
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
     }
   </style>
 </head>
@@ -328,7 +400,8 @@
   <header>
     <nav class="nav" aria-label="Main navigation">
       <a href="index.html" aria-label="Perry Intimates home">
-        <img class="logo"
+        <img
+          class="logo"
           src="file_000000003c1c8246ab1c96b1d7729e3d.png"
           alt="Perry Intimates logo">
       </a>
@@ -336,7 +409,7 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
-        <a class="active" href="about.html">About</a>
+        <a class="active" href="about.html" aria-current="page">About</a>
         <a href="contact.html">Contact</a>
       </div>
     </nav>
@@ -347,8 +420,9 @@
       <p class="eyebrow">The Perry Intimates Philosophy</p>
       <h1>Intimacy Deserves a More Considered Approach.</h1>
       <p>
-        We believe intimate wellness should be approached with confidence,
-        care, inclusivity, and respect for every individual's comfort and choices.
+        We believe intimate wellness deserves to be approached with confidence,
+        care and respect. Our aim is to make exploring personal preferences
+        feel comfortable, informed and free from unnecessary judgement.
       </p>
     </section>
 
@@ -362,19 +436,27 @@
         <div class="story-copy">
           <p>
             Perry Intimates was created around a simple idea: intimate wellness
-            deserves thoughtful attention. It is personal, individual, and
+            deserves thoughtful attention. It is personal, individual and
             different for everyone.
           </p>
+
           <p>
-            Our aim is to create a welcoming space where adults can explore
-            intimate wellness without unnecessary judgement or embarrassment.
-            We believe that good choices begin with comfort, information,
-            and the freedom to decide what feels right for you.
+            We believe adults should be able to explore intimate wellness
+            with confidence and without embarrassment. That means having
+            the freedom to ask questions, understand their options and choose
+            what feels right for them.
           </p>
+
           <p>
-            As we prepare our collection, we are focused on building a brand
-            experience that feels considered from the first visit to every
-            interaction that follows.
+            Our collection brings together intimate wellness essentials for
+            adults who value personal choice, curiosity and a more considered
+            shopping experience. We want every interaction with Perry Intimates
+            to feel respectful, straightforward and discreet.
+          </p>
+
+          <p>
+            From browsing our products to contacting us about an order,
+            we aim to make the experience as comfortable and clear as possible.
           </p>
         </div>
       </div>
@@ -392,25 +474,56 @@
             <h3>Comfort</h3>
             <p>
               Everyone deserves to feel comfortable asking questions,
-              exploring options, and making personal choices at their own pace.
+              exploring options and making personal choices at their own pace.
             </p>
           </article>
 
           <article class="value-card">
             <h3>Inclusivity</h3>
             <p>
-              Intimate wellness is personal. We aim to welcome adults of
-              all genders and respect different needs and preferences.
+              Intimate wellness is personal. We respect different needs,
+              preferences and experiences, and believe adults deserve
+              to make their own informed choices.
             </p>
           </article>
 
           <article class="value-card">
             <h3>Thoughtfulness</h3>
             <p>
-              From product selection to customer experience, our intention
-              is to approach each detail with care and consideration.
+              From product selection to customer communication, we aim
+              to approach every detail with care, discretion and consideration.
             </p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience">
+      <div class="experience-inner">
+        <div>
+          <p class="eyebrow">The Perry Experience</p>
+          <h2>Personal Choices. Considered Care.</h2>
+        </div>
+
+        <div class="experience-copy">
+          <p>
+            We understand that shopping for intimate wellness products
+            can feel personal. That is why we want our customers to have
+            the information they need to make choices with confidence.
+          </p>
+
+          <p>
+            Perry Intimates is an online store, with orders and product
+            enquiries handled through our website and customer contact
+            channels. Delivery arrangements depend on the destination
+            and the availability of suitable delivery services.
+          </p>
+
+          <p>
+            Whether you are exploring the collection or need help before
+            placing an order, you are welcome to contact us. We aim to
+            respond with respect, clarity and discretion.
+          </p>
         </div>
       </div>
     </section>
@@ -419,10 +532,10 @@
       <p class="eyebrow">Your Experience, Your Way</p>
       <h2>Welcome to Perry Intimates.</h2>
       <p>
-        We are preparing a collection shaped by our commitment to
-        personal comfort, intimate wellness, and a more thoughtful experience.
+        Explore intimate wellness essentials selected for adults who value
+        personal comfort, curiosity and a more considered approach to pleasure.
       </p>
-      <a class="button" href="shop.html">Explore the Shop</a>
+      <a class="button" href="shop.html">Explore the Collection</a>
     </section>
   </main>
 
@@ -430,11 +543,14 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <a href="index.html">
-          <img class="footer-logo"
+          <img
+            class="footer-logo"
             src="file_000000003c1c8246ab1c96b1d7729e3d.png"
             alt="Perry Intimates">
         </a>
-        <p>Intimacy, Elevated. A considered approach to intimate wellness.</p>
+        <p>
+          Intimacy, Elevated. A considered approach to intimate wellness.
+        </p>
       </div>
 
       <div>
@@ -442,7 +558,7 @@
         <div class="footer-links">
           <a href="index.html">Home</a>
           <a href="shop.html">Shop</a>
-          <a href="about.html">About Us</a>
+          <a href="about.html" aria-current="page">About Us</a>
           <a href="contact.html">Contact Us</a>
         </div>
       </div>
@@ -465,7 +581,9 @@
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
   </script>
 </body>
-</html>
+  </html>
+          
