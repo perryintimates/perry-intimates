@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://perryintimates.github.io/perry-intimates/sitemap.xml
