@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171615">
-  <meta name="description" content="Complete your Perry Intimates order enquiry.">
+  <meta name="description" content="Prepare your Perry Intimates order enquiry.">
   <title>Checkout | Perry Intimates</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,6 +47,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: 18px;
       padding: 20px 6%;
       border-bottom: 1px solid var(--line);
@@ -73,6 +74,8 @@
       font-size: 12px;
       text-decoration: none;
     }
+
+    .back-link:hover { color: var(--gold); }
 
     main {
       max-width: 1050px;
@@ -209,6 +212,7 @@
       margin-top: 4px;
       color: var(--muted);
       font-size: 11px;
+      overflow-wrap: anywhere;
     }
 
     .item-price {
@@ -279,12 +283,14 @@
       PERRY INTIMATES
       <small>INTIMACY, ELEVATED.</small>
     </a>
+
     <a class="back-link" href="cart.html">← Back to cart</a>
   </header>
 
   <main>
     <div class="eyebrow">ALMOST YOURS</div>
     <h1>Checkout</h1>
+
     <p class="intro">
       Enter your details to prepare your order. You'll review the order
       in WhatsApp with our team before payment and delivery are confirmed.
@@ -395,18 +401,26 @@
     const money = amount =>
       "₦" + Number(amount).toLocaleString("en-NG");
 
+    // Read the same data format that shop.html saves.
     function readCart() {
       try {
-        const value = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
-        if (!Array.isArray(value)) return [];
+        const saved = JSON.parse(
+          localStorage.getItem(CART_KEY) || "[]"
+        );
 
-        return value.filter(item =>
+        if (!Array.isArray(saved)) return [];
+
+        return saved.map(item => ({
+          ...item,
+          qty: Number(item.qty ?? item.quantity),
+          colour: item.colour ?? item.variant ?? ""
+        })).filter(item =>
           item &&
           typeof item.name === "string" &&
           Number.isFinite(Number(item.price)) &&
           Number(item.price) >= 0 &&
-          Number.isInteger(Number(item.qty)) &&
-          Number(item.qty) > 0
+          Number.isInteger(item.qty) &&
+          item.qty >= 1
         );
       } catch (error) {
         return [];
@@ -416,7 +430,7 @@
     function renderCart() {
       const cart = readCart();
       const items = document.getElementById("items");
-      const subtotal = document.getElementById("subtotal");
+      const subtotalElement = document.getElementById("subtotal");
       const button = document.getElementById("submit-btn");
 
       items.replaceChildren();
@@ -446,12 +460,18 @@
           const details = document.createElement("div");
           details.className = "item-details";
 
-          const colour = item.colour ? String(item.colour) + " · " : "";
-          details.textContent = colour + "Quantity: " + Number(item.qty);
+          const variant = item.colour
+            ? String(item.colour) + " · "
+            : "";
+
+          details.textContent =
+            variant + "Quantity: " + item.qty;
 
           const price = document.createElement("div");
           price.className = "item-price";
-          price.textContent = money(Number(item.price) * Number(item.qty));
+          price.textContent = money(
+            Number(item.price) * item.qty
+          );
 
           description.append(name, details);
           row.append(description, price);
@@ -460,99 +480,111 @@
       }
 
       const total = cart.reduce(
-        (sum, item) => sum + Number(item.price) * Number(item.qty),
+        (sum, item) =>
+          sum + Number(item.price) * item.qty,
         0
       );
 
-      subtotal.textContent = money(total);
+      subtotalElement.textContent = money(total);
       button.disabled = cart.length === 0;
     }
 
     renderCart();
 
-    document.getElementById("checkout-form").addEventListener("submit", event => {
-      event.preventDefault();
+    document.getElementById("checkout-form")
+      .addEventListener("submit", event => {
+        event.preventDefault();
 
-      const cart = readCart();
-      const status = document.getElementById("status");
+        const cart = readCart();
+        const status = document.getElementById("status");
 
-      if (cart.length === 0) {
-        status.textContent = "Your cart is empty. Please add a product first.";
-        renderCart();
-        return;
-      }
+        if (cart.length === 0) {
+          status.textContent =
+            "Your cart is empty. Please add a product first.";
 
-      const form = event.currentTarget;
+          renderCart();
+          return;
+        }
 
-      if (!form.reportValidity()) return;
+        const form = event.currentTarget;
 
-      const data = new FormData(form);
+        if (!form.reportValidity()) return;
 
-      const customer = {
-        name: String(data.get("name") || "").trim(),
-        email: String(data.get("email") || "").trim(),
-        phone: String(data.get("phone") || "").trim(),
-        country: String(data.get("country") || "").trim(),
-        state: String(data.get("state") || "").trim(),
-        city: String(data.get("city") || "").trim(),
-        address: String(data.get("address") || "").trim(),
-        notes: String(data.get("notes") || "").trim()
-      };
+        const data = new FormData(form);
 
-      const subtotal = cart.reduce(
-        (sum, item) => sum + Number(item.price) * Number(item.qty),
-        0
-      );
+        const customer = {
+          name: String(data.get("name") || "").trim(),
+          email: String(data.get("email") || "").trim(),
+          phone: String(data.get("phone") || "").trim(),
+          country: String(data.get("country") || "").trim(),
+          state: String(data.get("state") || "").trim(),
+          city: String(data.get("city") || "").trim(),
+          address: String(data.get("address") || "").trim(),
+          notes: String(data.get("notes") || "").trim()
+        };
 
-      const lines = [
-        "Hello Perry Intimates, I'd like to enquire about placing this order.",
-        "",
-        "CUSTOMER DETAILS",
-        "Name: " + customer.name,
-        "Email: " + customer.email,
-        "Phone: " + customer.phone,
-        "",
-        "DELIVERY DETAILS",
-        "Country: " + customer.country,
-        "State/Region: " + customer.state,
-        "City: " + customer.city,
-        "Address: " + customer.address
-      ];
-
-      if (customer.notes) {
-        lines.push("Delivery notes: " + customer.notes);
-      }
-
-      lines.push("", "ORDER ITEMS");
-
-      cart.forEach((item, index) => {
-        lines.push(
-          (index + 1) + ". " + item.name,
-          "   Quantity: " + Number(item.qty),
-          "   Unit price: " + money(Number(item.price)),
-          "   Item total: " + money(Number(item.price) * Number(item.qty))
+        const subtotal = cart.reduce(
+          (sum, item) =>
+            sum + Number(item.price) * item.qty,
+          0
         );
+
+        const lines = [
+          "Hello Perry Intimates, I'd like to enquire about placing this order.",
+          "",
+          "CUSTOMER DETAILS",
+          "Name: " + customer.name,
+          "Email: " + customer.email,
+          "Phone: " + customer.phone,
+          "",
+          "DELIVERY DETAILS",
+          "Country: " + customer.country,
+          "State/Region: " + customer.state,
+          "City: " + customer.city,
+          "Address: " + customer.address
+        ];
+
+        if (customer.notes) {
+          lines.push(
+            "Delivery notes: " + customer.notes
+          );
+        }
+
+        lines.push("", "ORDER ITEMS");
+
+        cart.forEach((item, index) => {
+          lines.push(
+            (index + 1) + ". " + item.name,
+            "   Quantity: " + item.qty,
+            "   Unit price: " + money(Number(item.price)),
+            "   Item total: " +
+              money(Number(item.price) * item.qty)
+          );
+
+          if (item.colour) {
+            lines.push("   Option: " + item.colour);
+          }
+        });
+
+        lines.push(
+          "",
+          "Subtotal: " + money(subtotal),
+          "Delivery fee: To be confirmed",
+          "",
+          "Please confirm delivery availability, the delivery fee and payment instructions.",
+          "I understand this message is an order enquiry, not a completed payment or confirmed order."
+        );
+
+        const whatsappURL =
+          "https://wa.me/" + WHATSAPP_NUMBER +
+          "?text=" + encodeURIComponent(lines.join("\n"));
+
+        status.textContent =
+          "Opening WhatsApp. Please review the prepared message and press Send to submit your enquiry.";
+
+        window.location.href = whatsappURL;
       });
-
-      lines.push(
-        "",
-        "Subtotal: " + money(subtotal),
-        "Delivery fee: To be confirmed",
-        "",
-        "Please confirm delivery availability, the delivery fee and payment instructions.",
-        "I understand this message is an order enquiry, not a completed payment or confirmed order."
-      );
-
-      const whatsappURL =
-        "https://wa.me/" + WHATSAPP_NUMBER +
-        "?text=" + encodeURIComponent(lines.join("\n"));
-
-      status.textContent =
-        "Opening WhatsApp. Please review the prepared message and press Send to submit your enquiry.";
-
-      window.location.href = whatsappURL;
-    });
   </script>
 </body>
- </html>
- 
+  </html>
+      
