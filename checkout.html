@@ -2,91 +2,557 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Checkout | Perry Intimates</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#171615;--ivory:#F6F0E8;--gold:#B69A70;--muted:#766F68;--white:#FFFDF9;--line:#E4DBCF}
-*{box-sizing:border-box}
-body{margin:0;background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif}
-a{color:inherit;text-decoration:none}
-.top{background:var(--ink);color:white;text-align:center;padding:10px;font-size:12px;letter-spacing:.08em}
-header{display:flex;align-items:center;justify-content:space-between;padding:20px 6%;border-bottom:1px solid var(--line)}
-.brand{font:22px 'Playfair Display',serif;letter-spacing:.08em}
-.brand small{display:block;font:10px 'DM Sans',sans-serif;letter-spacing:.22em;text-align:center;color:var(--gold)}
-main{max-width:1000px;margin:auto;padding:42px 6%}
-h1{font:500 clamp(34px,5vw,48px) 'Playfair Display',serif}
-.layout{display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
-.panel{border:1px solid var(--line);padding:22px}
-.panel h2{font:500 24px 'Playfair Display',serif;margin-top:0}
-.field{margin:14px 0}
-label{display:block;font-size:12px;margin-bottom:7px}
-input,textarea{width:100%;padding:12px;border:1px solid #D6CCBF;background:white;font:inherit}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.orderitem,.total{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}
-.total{font-weight:700;border:0;margin-top:12px}
-.btn{width:100%;background:var(--ink);color:white;padding:15px;border:0;font:600 12px 'DM Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;margin-top:18px}
-.notice{font-size:12px;line-height:1.7;color:var(--muted)}
-.status{line-height:1.6;margin-top:16px;color:#4E6245}
-footer{background:var(--ink);color:white;padding:26px 6%;font-size:12px}
-@media(max-width:720px){header{padding:16px 5%}main{padding:28px 5%}.layout,.two{grid-template-columns:1fr}.panel{padding:17px}.brand{font-size:19px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171615">
+  <meta name="description" content="Complete your Perry Intimates order enquiry.">
+  <title>Checkout | Perry Intimates</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #171615;
+      --ivory: #f7f4ee;
+      --gold: #b99a61;
+      --muted: #77716a;
+      --white: #fffdf9;
+      --line: #e7dfd3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .top {
+      padding: 10px;
+      background: var(--ink);
+      color: white;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 6%;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 3px;
+      color: var(--gold);
+      font-family: "DM Sans", sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-align: center;
+    }
+
+    .back-link {
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 1050px;
+      margin: auto;
+      padding: 42px 6% 70px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    h1, h2 {
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    h1 {
+      margin: 10px 0 12px;
+      font-size: clamp(36px, 5vw, 50px);
+    }
+
+    .intro {
+      max-width: 650px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: start;
+      gap: 25px;
+    }
+
+    .panel {
+      min-width: 0;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .panel h2 {
+      margin: 0 0 20px;
+      font-size: 25px;
+    }
+
+    .field { margin-bottom: 17px; }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      min-width: 0;
+      padding: 12px 13px;
+      border: 1px solid #d6ccbf;
+      border-radius: 0;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+    }
+
+    input:focus, textarea:focus {
+      outline: 1px solid var(--gold);
+      border-color: var(--gold);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 85px;
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 18px;
+      padding: 15px;
+      border: 0;
+      background: var(--ink);
+      color: white;
+      font-family: "DM Sans", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-align: center;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .btn:hover { background: #38342e; }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 14px;
+      background: var(--ivory);
+      color: #5e574e;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .orderitem {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    .item-name { font-weight: 600; }
+
+    .item-details {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .item-price {
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 18px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .edit-cart {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 12px;
+      text-decoration-color: var(--gold);
+      text-underline-offset: 4px;
+    }
+
+    .empty {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .empty a { color: var(--ink); }
+
+    .status {
+      margin-top: 14px;
+      color: #66512c;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 28px 6%;
+      background: var(--ink);
+      color: #d5cec4;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 720px) {
+      header { padding: 17px 5%; }
+      .brand { font-size: 18px; }
+      main { padding: 30px 5% 50px; }
+      .layout, .two { grid-template-columns: 1fr; }
+      .panel { padding: 19px; }
+      .layout { gap: 18px; }
+    }
+  </style>
 </head>
+
 <body>
-<div class="top">INTIMACY, ELEVATED.</div>
-<header>
-<a class="brand" href="index.html">PERRY INTIMATES<small>INTIMACY, ELEVATED.</small></a>
-<a href="cart.html">← Back to Cart</a>
-</header>
-<main>
-<p style="color:var(--gold);letter-spacing:.15em;font-size:11px">ALMOST YOURS</p>
-<h1>Checkout</h1>
-<div class="layout">
-<form class="panel" id="form">
-<h2>Delivery details</h2>
-<div class="field"><label for="name">Full name *</label><input id="name" name="name" autocomplete="name" required></div>
-<div class="two">
-<div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-<div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
-</div>
-<div class="field"><label for="country">Country *</label><input id="country" name="country" value="Nigeria" autocomplete="country-name" required></div>
-<div class="two">
-<div class="field"><label for="state">State / Region *</label><input id="state" name="state" autocomplete="address-level1" required></div>
-<div class="field"><label for="city">City *</label><input id="city" name="city" autocomplete="address-level2" required></div>
-</div>
-<div class="field"><label for="address">Delivery address *</label><textarea id="address" name="address" rows="3" autocomplete="street-address" required></textarea></div>
-<div class="field"><label for="notes">Delivery notes (optional)</label><textarea id="notes" name="notes" rows="2"></textarea></div>
-<button class="btn" type="submit">Review Order</button>
-<div class="status" id="status" aria-live="polite"></div>
-</form>
-<aside class="panel">
-<h2>Your Order</h2>
-<div id="items"></div>
-<div class="total"><span>Subtotal</span><span id="subtotal">₦0</span></div>
-<p class="notice">Delivery cost depends on your destination and will be confirmed before payment. Online payment is not connected yet. Submitting this form does not charge you or confirm an order.</p>
-<a href="cart.html">Edit cart</a>
-</aside>
-</div>
-</main>
-<footer>PERRY INTIMATES · Intimacy, Elevated. | perryintimates@gmail.com</footer>
-<script>
-const KEY='perryIntimatesCartV1';
-const money=n=>'₦'+Number(n).toLocaleString('en-NG');
-function readCart(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
-function render(){
- const cart=readCart();
- document.getElementById('items').innerHTML=cart.length?cart.map(i=>`<div class="orderitem"><span>${i.name}<br><small>${i.colour} · Qty ${i.qty}</small></span><strong>${money(i.price*i.qty)}</strong></div>`).join(''):'<p>Your cart is empty. <a href="shop.html">Shop now</a>.</p>';
- document.getElementById('subtotal').textContent=money(cart.reduce((s,i)=>s+i.price*i.qty,0));
- document.querySelector('#form button').disabled=!cart.length;
-}
-render();
-document.getElementById('form').addEventListener('submit',event=>{
- event.preventDefault();
- if(!readCart().length)return;
- document.getElementById('status').textContent='Your delivery details are complete. Online payment is not connected yet, so no payment has been taken and the order has not been submitted. A secure payment integration is required to finish checkout.';
-});
-</script>
+  <div class="top">INTIMACY, ELEVATED.</div>
+
+  <header>
+    <a class="brand" href="index.html">
+      PERRY INTIMATES
+      <small>INTIMACY, ELEVATED.</small>
+    </a>
+    <a class="back-link" href="cart.html">← Back to cart</a>
+  </header>
+
+  <main>
+    <div class="eyebrow">ALMOST YOURS</div>
+    <h1>Checkout</h1>
+    <p class="intro">
+      Enter your details to prepare your order. You'll review the order
+      in WhatsApp with our team before payment and delivery are confirmed.
+    </p>
+
+    <div class="layout">
+      <form class="panel" id="checkout-form">
+        <h2>Delivery details</h2>
+
+        <div class="field">
+          <label for="name">Full name *</label>
+          <input id="name" name="name" autocomplete="name" required>
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label for="email">Email address *</label>
+            <input id="email" name="email" type="email"
+                   autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone number *</label>
+            <input id="phone" name="phone" type="tel"
+                   autocomplete="tel" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="country">Country *</label>
+          <input id="country" name="country" value="Nigeria"
+                 autocomplete="country-name" required>
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label for="state">State / Region *</label>
+            <input id="state" name="state"
+                   autocomplete="address-level1" required>
+          </div>
+
+          <div class="field">
+            <label for="city">City *</label>
+            <input id="city" name="city"
+                   autocomplete="address-level2" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="address">Delivery address *</label>
+          <textarea id="address" name="address"
+                    autocomplete="street-address" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="notes">Additional delivery notes (optional)</label>
+          <textarea id="notes" name="notes"
+                    placeholder="Any useful delivery instructions"></textarea>
+        </div>
+
+        <button class="btn" id="submit-btn" type="submit">
+          Continue to WhatsApp
+        </button>
+
+        <div class="status" id="status" aria-live="polite"></div>
+
+        <div class="notice">
+          Continuing opens WhatsApp with your order details prepared
+          as a message. You must press Send in WhatsApp to send your
+          enquiry. No online payment is taken at this stage.
+        </div>
+      </form>
+
+      <aside class="panel">
+        <h2>Your order</h2>
+        <div id="items"></div>
+
+        <div class="total">
+          <span>Subtotal</span>
+          <span id="subtotal">₦0</span>
+        </div>
+
+        <div class="notice">
+          Delivery fees depend on your destination. We'll confirm
+          delivery availability, charges and payment instructions
+          with you before your order is finalised.
+        </div>
+
+        <a class="edit-cart" href="cart.html">Edit your cart</a>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    PERRY INTIMATES · INTIMACY, ELEVATED.<br>
+    <a href="mailto:perryintimates@gmail.com">perryintimates@gmail.com</a>
+    <br><br>
+    <a href="shipping.html">Shipping</a> ·
+    <a href="returns.html">Returns</a> ·
+    <a href="privacy.html">Privacy</a> ·
+    <a href="terms.html">Terms</a>
+  </footer>
+
+  <script>
+    const CART_KEY = "perryIntimatesCartV1";
+    const WHATSAPP_NUMBER = "2347032620233";
+
+    const money = amount =>
+      "₦" + Number(amount).toLocaleString("en-NG");
+
+    function readCart() {
+      try {
+        const value = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+        if (!Array.isArray(value)) return [];
+
+        return value.filter(item =>
+          item &&
+          typeof item.name === "string" &&
+          Number.isFinite(Number(item.price)) &&
+          Number(item.price) >= 0 &&
+          Number.isInteger(Number(item.qty)) &&
+          Number(item.qty) > 0
+        );
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function renderCart() {
+      const cart = readCart();
+      const items = document.getElementById("items");
+      const subtotal = document.getElementById("subtotal");
+      const button = document.getElementById("submit-btn");
+
+      items.replaceChildren();
+
+      if (cart.length === 0) {
+        const message = document.createElement("p");
+        message.className = "empty";
+        message.textContent = "Your cart is empty. ";
+
+        const link = document.createElement("a");
+        link.href = "shop.html";
+        link.textContent = "Browse products";
+
+        message.appendChild(link);
+        items.appendChild(message);
+      } else {
+        cart.forEach(item => {
+          const row = document.createElement("div");
+          row.className = "orderitem";
+
+          const description = document.createElement("div");
+
+          const name = document.createElement("div");
+          name.className = "item-name";
+          name.textContent = item.name;
+
+          const details = document.createElement("div");
+          details.className = "item-details";
+
+          const colour = item.colour ? String(item.colour) + " · " : "";
+          details.textContent = colour + "Quantity: " + Number(item.qty);
+
+          const price = document.createElement("div");
+          price.className = "item-price";
+          price.textContent = money(Number(item.price) * Number(item.qty));
+
+          description.append(name, details);
+          row.append(description, price);
+          items.appendChild(row);
+        });
+      }
+
+      const total = cart.reduce(
+        (sum, item) => sum + Number(item.price) * Number(item.qty),
+        0
+      );
+
+      subtotal.textContent = money(total);
+      button.disabled = cart.length === 0;
+    }
+
+    renderCart();
+
+    document.getElementById("checkout-form").addEventListener("submit", event => {
+      event.preventDefault();
+
+      const cart = readCart();
+      const status = document.getElementById("status");
+
+      if (cart.length === 0) {
+        status.textContent = "Your cart is empty. Please add a product first.";
+        renderCart();
+        return;
+      }
+
+      const form = event.currentTarget;
+
+      if (!form.reportValidity()) return;
+
+      const data = new FormData(form);
+
+      const customer = {
+        name: String(data.get("name") || "").trim(),
+        email: String(data.get("email") || "").trim(),
+        phone: String(data.get("phone") || "").trim(),
+        country: String(data.get("country") || "").trim(),
+        state: String(data.get("state") || "").trim(),
+        city: String(data.get("city") || "").trim(),
+        address: String(data.get("address") || "").trim(),
+        notes: String(data.get("notes") || "").trim()
+      };
+
+      const subtotal = cart.reduce(
+        (sum, item) => sum + Number(item.price) * Number(item.qty),
+        0
+      );
+
+      const lines = [
+        "Hello Perry Intimates, I'd like to enquire about placing this order.",
+        "",
+        "CUSTOMER DETAILS",
+        "Name: " + customer.name,
+        "Email: " + customer.email,
+        "Phone: " + customer.phone,
+        "",
+        "DELIVERY DETAILS",
+        "Country: " + customer.country,
+        "State/Region: " + customer.state,
+        "City: " + customer.city,
+        "Address: " + customer.address
+      ];
+
+      if (customer.notes) {
+        lines.push("Delivery notes: " + customer.notes);
+      }
+
+      lines.push("", "ORDER ITEMS");
+
+      cart.forEach((item, index) => {
+        lines.push(
+          (index + 1) + ". " + item.name,
+          "   Quantity: " + Number(item.qty),
+          "   Unit price: " + money(Number(item.price)),
+          "   Item total: " + money(Number(item.price) * Number(item.qty))
+        );
+      });
+
+      lines.push(
+        "",
+        "Subtotal: " + money(subtotal),
+        "Delivery fee: To be confirmed",
+        "",
+        "Please confirm delivery availability, the delivery fee and payment instructions.",
+        "I understand this message is an order enquiry, not a completed payment or confirmed order."
+      );
+
+      const whatsappURL =
+        "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(lines.join("\n"));
+
+      status.textContent =
+        "Opening WhatsApp. Please review the prepared message and press Send to submit your enquiry.";
+
+      window.location.href = whatsappURL;
+    });
+  </script>
 </body>
-                     </html>
-                                                                    
+ </html>
+ 
