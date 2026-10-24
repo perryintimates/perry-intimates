@@ -2,95 +2,651 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shop | Perry Intimates</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#171615;--ivory:#F6F0E8;--gold:#B69A70;--muted:#766F68;--white:#FFFDF9;--line:#E4DBCF}
-*{box-sizing:border-box}
-body{margin:0;background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif}
-a{color:inherit;text-decoration:none}
-.top{background:var(--ink);color:white;text-align:center;padding:10px;font-size:12px;letter-spacing:.08em}
-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 6%;border-bottom:1px solid var(--line)}
-.brand{font:22px 'Playfair Display',serif;letter-spacing:.08em}
-.brand small{display:block;font:10px 'DM Sans',sans-serif;letter-spacing:.22em;text-align:center;color:var(--gold)}
-nav{display:flex;gap:18px;font-size:13px;flex-wrap:wrap}
-.cartlink{border:1px solid var(--gold);padding:10px 14px}
-main{max-width:1120px;margin:auto;padding:48px 6%}
-.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-h1,h2{font-family:'Playfair Display',serif;font-weight:500}
-h1{font-size:clamp(36px,5vw,54px);margin:10px 0}
-.muted{color:var(--muted);line-height:1.7}
-.product{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-top:34px}
-.photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.photos img{width:100%;height:340px;object-fit:contain;background:var(--ivory)}
-.price{font-size:22px;font-weight:600;margin:15px 0}
-.field{margin:20px 0}
-label{display:block;font-size:12px;margin-bottom:8px}
-select,input{padding:13px;border:1px solid #D6CCBF;background:white;font:inherit;width:100%}
-input{max-width:110px}
-.btn{display:inline-block;background:var(--ink);color:white;border:1px solid var(--ink);padding:15px 22px;font:600 12px 'DM Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
-.status{min-height:22px;margin-top:12px;color:#526B47;font-size:13px}
-footer{background:var(--ink);color:white;padding:28px 6%;font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:720px){header{padding:16px 5%;flex-wrap:wrap}nav{order:3;width:100%;gap:12px}main{padding:34px 5%}.product{grid-template-columns:1fr;gap:20px}.photos img{height:240px}.brand{font-size:19px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171615">
+  <title>Shop | Perry Intimates</title>
+  <meta name="description" content="Explore the Perry Intimates collection. Intimacy, Elevated.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #171615;
+      --ivory: #F6F0E8;
+      --gold: #B69A70;
+      --nude: #E6DDD2;
+      --white: #FFFDF9;
+      --muted: #766F68;
+      --border: #ded4c8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--black);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .announcement {
+      background: var(--black);
+      color: var(--ivory);
+      text-align: center;
+      padding: 10px 14px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      letter-spacing: 3px;
+      line-height: 1.1;
+    }
+
+    .brand small {
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      font-size: 9px;
+      letter-spacing: 5px;
+      margin-top: 7px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 12px;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+    .cart-link {
+      border: 1px solid var(--gold);
+      padding: 10px 14px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      background: var(--ivory);
+      text-align: center;
+      padding: 64px 20px 58px;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 62px);
+      margin: 15px 0 12px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      max-width: 470px;
+      margin: 0 auto;
+    }
+
+    main {
+      max-width: 1250px;
+      margin: auto;
+      padding: 44px 5% 70px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-size: 30px;
+      margin: 0 0 7px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 34px 22px;
+    }
+
+    .product-card {
+      min-width: 0;
+      border: 1px solid var(--border);
+      background: var(--white);
+      padding-bottom: 20px;
+    }
+
+    .gallery {
+      background: var(--ivory);
+      padding: 10px;
+    }
+
+    .main-media {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      display: block;
+      background: var(--ivory);
+      cursor: pointer;
+    }
+
+    .thumbnails {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding-top: 9px;
+    }
+
+    .thumb {
+      width: 55px;
+      height: 55px;
+      flex: 0 0 55px;
+      padding: 0;
+      border: 1px solid var(--border);
+      background: var(--white);
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .thumb.active { border: 2px solid var(--gold); }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-info { padding: 18px 17px 0; }
+
+    .product-info h3 {
+      font-size: 23px;
+      line-height: 1.3;
+      margin: 0 0 8px;
+    }
+
+    .price {
+      color: var(--black);
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .product-description {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      margin: 0 0 16px;
+    }
+
+    .product-video {
+      width: 100%;
+      max-height: 300px;
+      background: var(--black);
+      display: block;
+      margin: 12px 0 16px;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 11px;
+      margin: 14px 0 7px;
+      color: var(--muted);
+    }
+
+    select, input {
+      font: inherit;
+      color: var(--black);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      padding: 11px;
+      width: 100%;
+      min-height: 42px;
+    }
+
+    .quantity {
+      max-width: 100px;
+    }
+
+    .add-button {
+      margin-top: 15px;
+      width: 100%;
+      border: 1px solid var(--black);
+      background: var(--black);
+      color: var(--white);
+      padding: 14px 12px;
+      font: inherit;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+
+    .add-button:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+    }
+
+    .status {
+      min-height: 18px;
+      margin: 9px 0 0;
+      color: #5d704d;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .note {
+      background: var(--ivory);
+      margin-top: 42px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .note h2 {
+      font-size: 25px;
+      margin: 0 0 9px;
+    }
+
+    .note p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      max-width: 550px;
+      margin: auto;
+    }
+
+    footer {
+      background: var(--black);
+      color: var(--ivory);
+      padding: 38px 5%;
+      text-align: center;
+    }
+
+    footer .footer-brand {
+      font-family: "Playfair Display", serif;
+      font-size: 23px;
+      letter-spacing: 3px;
+    }
+
+    footer p {
+      color: #c5bdb4;
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin: 20px 0;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    @media (min-width: 900px) {
+      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 16px 4%;
+        flex-wrap: wrap;
+      }
+
+      .brand { font-size: 21px; }
+
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 11px;
+      }
+
+      .cart-link { padding: 8px 10px; }
+
+      .hero { padding: 48px 18px; }
+
+      main { padding: 32px 4% 50px; }
+
+      .product-grid { gap: 22px 12px; }
+
+      .product-info { padding: 14px 10px 0; }
+
+      .product-info h3 { font-size: 18px; }
+
+      .price { font-size: 15px; }
+
+      .product-description { font-size: 11px; }
+
+      .gallery { padding: 6px; }
+
+      .thumb {
+        width: 43px;
+        height: 43px;
+        flex-basis: 43px;
+      }
+
+      .add-button {
+        font-size: 10px;
+        letter-spacing: .7px;
+        padding: 12px 5px;
+      }
+
+      .section-heading h2 { font-size: 26px; }
+    }
+
+    @media (max-width: 360px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .product-info h3 { font-size: 22px; }
+    }
+  </style>
 </head>
+
 <body>
-<div class="top">INTIMACY, ELEVATED. · DELIVERY ACROSS NIGERIA</div>
-<header>
-<a class="brand" href="index.html">PERRY INTIMATES<small>INTIMACY, ELEVATED.</small></a>
-<nav><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">Our Story</a><a href="contact.html">Contact</a></nav>
-<a class="cartlink" href="cart.html">Cart (<span id="count">0</span>)</a>
-</header>
-<main>
-<div class="eyebrow">The collection</div>
-<h1>Shop Intimates</h1>
-<p class="muted">Thoughtfully selected intimate essentials, with comfort and discretion in mind.</p>
-<section class="product">
-<div class="photos">
-<img src="IMG_20261024_064836_723.jpg" alt="Rose Sucking and Stimulation product">
-<img src="IMG_20261024_064841_040.jpg" alt="Available product colours">
-</div>
-<div>
-<div class="eyebrow">Featured product</div>
-<h2>Rose Sucking &amp; Stimulation</h2>
-<div class="price">₦33,000</div>
-<p class="muted">Choose your preferred colour and quantity, then add your selection to the cart.</p>
-<div class="field">
-<label for="colour">CHOOSE COLOUR</label>
-<select id="colour">
-<option>Red</option><option>Rose Pink</option><option>Black</option><option>Yellow</option><option>Sky Blue</option><option>Purple</option>
-</select>
-</div>
-<div class="field">
-<label for="qty">QUANTITY</label>
-<input id="qty" type="number" min="1" max="20" value="1">
-</div>
-<button class="btn" id="add">Add to Cart</button>
-<div class="status" id="status" aria-live="polite"></div>
-<p class="muted" style="font-size:12px">Delivery charges depend on your destination and will be confirmed before payment.</p>
-</div>
-</section>
-</main>
-<footer><span>PERRY INTIMATES · Intimacy, Elevated.</span><span>perryintimates@gmail.com · +234 703 262 0233</span></footer>
-<script>
-const KEY='perryIntimatesCartV1',PRICE=33000;
-function readCart(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
-function updateCount(){document.getElementById('count').textContent=readCart().reduce((s,i)=>s+i.qty,0)}
-updateCount();
-document.getElementById('add').addEventListener('click',()=>{
- const colour=document.getElementById('colour').value;
- const qty=Math.max(1,Math.min(20,parseInt(document.getElementById('qty').value,10)||1));
- const cart=readCart();
- const existing=cart.find(i=>i.id==='rose-stimulation'&&i.colour===colour);
- if(existing)existing.qty+=qty;
- else cart.push({id:'rose-stimulation',name:'Rose Sucking & Stimulation',colour,price:PRICE,qty});
- localStorage.setItem(KEY,JSON.stringify(cart));
- updateCount();
- document.getElementById('status').textContent=colour+' added to your cart.';
-});
-</script>
-</body>
-  </html>
-  
+  <div class="announcement">Perry Intimates · Intimacy, Elevated.</div>
+
+  <header>
+    <a class="brand" href="index.html" aria-label="Perry Intimates home">
+      PERRY
+      <small>INTIMATES</small>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+      <a class="cart-link" href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">The Perry Collection</div>
+    <h1>Discover Your Desires</h1>
+    <p>Explore the collection at your own pace. Thoughtfully presented, discreetly handled, and designed to make your personal experience your own.</p>
+  </section>
+
+  <main>
+    <div class="section-heading">
+      <div>
+        <h2>Shop the Collection</h2>
+        <p>Choose your products and add them to your cart.</p>
+      </div>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- ROSE SUCKING & STIMULATION -->
+      <article class="product-card" data-product="rose-stimulation">
+        <div class="gallery">
+          <img class="main-media"
+               src="IMG_20261024_064836_723.jpg"
+               alt="Rose Sucking and Stimulation"
+               data-gallery-main>
+          <div class="thumbnails">
+            <button class="thumb active" type="button" data-image="IMG_20261024_064836_723.jpg" aria-label="Rose product photo 1">
+              <img src="IMG_20261024_064836_723.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_064841_040.jpg" aria-label="Rose product photo 2">
+              <img src="IMG_20261024_064841_040.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_093549_039.jpg" aria-label="Rose product photo 3">
+              <img src="IMG_20261024_093549_039.jpg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Rose Sucking &amp; Stimulation</h3>
+          <div class="price">₦33,000</div>
+          <p class="product-description">Available in six colours. Select your preferred colour before adding to cart.</p>
+          <label class="field-label" for="rose-colour">Choose colour</label>
+          <select id="rose-colour" data-colour>
+            <option value="Red">Red</option>
+            <option value="Rose Pink">Rose Pink</option>
+            <option value="Black">Black</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Sky Blue">Sky Blue</option>
+            <option value="Purple">Purple</option>
+          </select>
+          <label class="field-label" for="rose-qty">Quantity</label>
+          <input class="quantity" id="rose-qty" data-qty type="number" min="1" step="1" value="1">
+          <button class="add-button" type="button" data-add>Add to Cart</button>
+          <p class="status" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- MARY SUCKER 2-IN-1 -->
+      <article class="product-card" data-product="mary-sucker">
+        <div class="gallery">
+          <img class="main-media"
+               src="IMG_20261024_093618_722.jpg"
+               alt="Mary Sucker 2-in-1"
+               data-gallery-main>
+          <div class="thumbnails">
+            <button class="thumb active" type="button" data-image="IMG_20261024_093618_722.jpg" aria-label="Mary Sucker photo 1">
+              <img src="IMG_20261024_093618_722.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_093619_403.jpg" aria-label="Mary Sucker photo 2">
+              <img src="IMG_20261024_093619_403.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_093619_501.jpg" aria-label="Mary Sucker photo 3">
+              <img src="IMG_20261024_093619_501.jpg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Mary Sucker 2-in-1</h3>
+          <div class="price">₦35,000</div>
+          <p class="product-description">A 2-in-1 function toy designed to provide two types of stimulation at the same time.</p>
+          <video class="product-video" controls preload="metadata" playsinline>
+            <source src="VID_20261024_093618_899.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+          <label class="field-label" for="mary-qty">Quantity</label>
+          <input class="quantity" id="mary-qty" data-qty type="number" min="1" step="1" value="1">
+          <button class="add-button" type="button" data-add>Add to Cart</button>
+          <p class="status" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- HANDCUFFS -->
+      <article class="product-card" data-product="handcuffs">
+        <div class="gallery">
+          <img class="main-media"
+               src="IMG_20261024_093627_406.jpg"
+               alt="Handcuffs"
+               data-gallery-main>
+          <div class="thumbnails">
+            <button class="thumb active" type="button" data-image="IMG_20261024_093627_406.jpg" aria-label="Handcuffs photo 1">
+              <img src="IMG_20261024_093627_406.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_093627_155.jpg" aria-label="Handcuffs photo 2">
+              <img src="IMG_20261024_093627_155.jpg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Handcuffs</h3>
+          <div class="price">₦35,000</div>
+          <label class="field-label" for="handcuffs-qty">Quantity</label>
+          <input class="quantity" id="handcuffs-qty" data-qty type="number" min="1" step="1" value="1">
+          <button class="add-button" type="button" data-add>Add to Cart</button>
+          <p class="status" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- MALE DOLL -->
+      <article class="product-card" data-product="male-doll">
+        <div class="gallery">
+          <img class="main-media"
+               src="IMG_20261024_093633_897.jpg"
+               alt="Male Doll"
+               data-gallery-main>
+          <div class="thumbnails">
+            <button class="thumb active" type="button" data-image="IMG_20261024_093633_897.jpg" aria-label="Male Doll photo 1">
+              <img src="IMG_20261024_093633_897.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_093633_944.jpg" aria-label="Male Doll photo 2">
+              <img src="IMG_20261024_093633_944.jpg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Male Doll</h3>
+          <div class="price">₦35,000</div>
+          <label class="field-label" for="doll-qty">Quantity</label>
+          <input class="quantity" id="doll-qty" data-qty type="number" min="1" step="1" value="1">
+          <button class="add-button" type="button" data-add>Add to Cart</button>
+          <p class="status" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- STRAP-ON DILDO -->
+      <article class="product-card" data-product="strap-on-dildo">
+        <div class="gallery">
+          <img class="main-media"
+               src="IMG_20261024_095116_753.jpg"
+               alt="Strap-on Dildo"
+               data-gallery-main>
+          <div class="thumbnails">
+            <button class="thumb active" type="button" data-image="IMG_20261024_095116_753.jpg" aria-label="Strap-on Dildo photo 1">
+              <img src="IMG_20261024_095116_753.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_095117_461.jpg" aria-label="Strap-on Dildo photo 2">
+              <img src="IMG_20261024_095117_461.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_095117_113.jpg" aria-label="Strap-on Dildo photo 3">
+              <img src="IMG_20261024_095117_113.jpg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Strap-on Dildo</h3>
+          <div class="price">₦40,000</div>
+          <label class="field-label" for="strap-qty">Quantity</label>
+          <input class="quantity" id="strap-qty" data-qty type="number" min="1" step="1" value="1">
+          <button class="add-button" type="button" data-add>Add to Cart</button>
+          <p class="status" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- LEMON SUCKER -->
+      <article class="product-card" data-product="lemon-sucker">
+        <div class="gallery">
+          <img class="main-media"
+               src="IMG_20261024_112029_576.jpg"
+               alt="Lemon Sucker"
+               data-gallery-main>
+          <div class="thumbnails">
+            <button class="thumb active" type="button" data-image="IMG_20261024_112029_576.jpg" aria-label="Lemon Sucker photo 1">
+              <img src="IMG_20261024_112029_576.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_111826_930.jpg" aria-label="Lemon Sucker photo 2">
+              <img src="IMG_20261024_111826_930.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_111826_181.jpg" aria-label="Lemon Sucker photo 3">
+              <img src="IMG_20261024_111826_181.jpg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Lemon Sucker</h3>
+          <div class="price">₦30,000</div>
+          <label class="field-label" for="lemon-qty">Quantity</label>
+          <input class="quantity" id="lemon-qty" data-qty type="number" min="1" step="1" value="1">
+          <button class="add-button" type="button" data-add>Add to Cart</button>
+          <p class="status" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- 13-IN-1 BDSM KIT -->
+      <article class="product-card" data-product="bdsm-kit">
+        <div class="gallery">
+          <img class="main-media"
+               src="IMG_20261024_112048_475.jpg"
+               alt="13-in-1 BDSM Kit"
+               data-gallery-main>
+          <div class="thumbnails">
+            <button class="thumb active" type="button" data-image="IMG_20261024_112048_475.jpg" aria-label="13-in-1 kit photo 1">
+              <img src="IMG_20261024_112048_475.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_112049_350.jpg" aria-label="13-in-1 kit photo 2">
+              <img src="IMG_20261024_112049_350.jpg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>13-in-1 BDSM Kit</h3>
+          <div class="price">₦30,000</div>
+          <video class="product-video" controls preload="metadata" playsinline>
+            <source src="VID_20261024_112048_788.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+          <label class="field-label" for="kit-qty">Quantity</label>
+          <input class="quantity" id="kit-qty" data-qty type="number" min="1" step="1" value="1">
+          <button class="add-button" type="button" data-add>Add to Cart</button>
+          <p class="status" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- PENIS PUMP -->
+      <article class="product-card" data-product="penis-pump">
+        <div class="gallery">
+          <img class="main-media"
+               src="IMG_20261024_112105_319.jpg"
+               alt="Penis Pump"
+               data-gallery-main>
+          <div class="thumbnails">
+            <button class="thumb active" type="button" data-image="IMG_20261024_112105_319.jpg" aria-label="Penis Pump photo 1">
+              <img src="IMG_20261024_112105_319.jpg" alt="">
+            </button>
+            <button class="thumb" type="button" data-image="IMG_20261024_112105_865.jpg" aria-label="Penis Pump photo 2">
+              <img src="IMG_20261024_112105_865.jpg" alt="">
+            </button>
+          </div>
+        </div>
+        <div cla
