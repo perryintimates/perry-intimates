@@ -249,11 +249,6 @@
 
     .btn.secondary:hover { background: white; }
 
-    .btn:disabled {
-      opacity: .45;
-      cursor: not-allowed;
-    }
-
     .empty {
       padding: 40px 24px;
       border: 1px solid var(--line);
@@ -314,7 +309,6 @@
       }
 
       .remove { margin-top: 0; }
-
       .summary { padding: 21px; }
     }
   </style>
@@ -367,120 +361,214 @@
 
   <script>
     const CART_KEY = "perryIntimatesCartV1";
+
     const money = amount =>
       "₦" + Number(amount).toLocaleString("en-NG");
 
+    // Read the same data format that shop.html saves.
     function readCart() {
       try {
-        const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
-        if (!Array.isArray(cart)) return [];
+        const saved = JSON.parse(
+          localStorage.getItem(CART_KEY) || "[]"
+        );
 
-        return cart.filter(item =>
+        if (!Array.isArray(saved)) return [];
+
+        return saved.map(item => ({
+          ...item,
+          qty: Number(item.qty ?? item.quantity),
+          colour: item.colour ?? item.variant ?? ""
+        })).filter(item =>
           item &&
           typeof item.name === "string" &&
           Number.isFinite(Number(item.price)) &&
           Number(item.price) >= 0 &&
-          Number.isInteger(Number(item.qty)) &&
-          Number(item.qty) >= 1
+          Number.isInteger(item.qty) &&
+          item.qty >= 1
         );
       } catch (error) {
         return [];
       }
     }
 
+    // Save changes without breaking compatibility with shop.html.
     function saveCart(cart) {
-      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      const compatibleCart = cart.map(item => {
+        const savedItem = { ...item };
+
+        savedItem.quantity = Number(item.qty);
+        savedItem.variant = item.colour || item.variant || "";
+
+        delete savedItem.qty;
+        delete savedItem.colour;
+
+        return savedItem;
+      });
+
+      localStorage.setItem(
+        CART_KEY,
+        JSON.stringify(compatibleCart)
+      );
+
       renderCart();
     }
 
     function makeElement(tag, className, text) {
       const element = document.createElement(tag);
+
       if (className) element.className = className;
       if (text !== undefined) element.textContent = text;
+
       return element;
     }
 
     function renderCart() {
       const cart = readCart();
       const content = document.getElementById("cart-content");
-      const count = cart.reduce((sum, item) => sum + Number(item.qty), 0);
+      const count = cart.reduce(
+        (sum, item) => sum + item.qty,
+        0
+      );
 
       document.getElementById("count").textContent = count;
       content.replaceChildren();
 
       if (cart.length === 0) {
         const empty = makeElement("section", "empty");
+
         empty.append(
           makeElement("h2", "", "Your cart is empty"),
-          makeElement("p", "", "You haven't added any products yet.")
+          makeElement(
+            "p",
+            "",
+            "You haven't added any products yet. Explore our collection and choose something you love."
+          )
         );
 
-        const shopLink = makeElement("a", "btn", "Explore the Collection");
+        const shopLink = makeElement(
+          "a",
+          "btn",
+          "Explore the Collection"
+        );
+
         shopLink.href = "shop.html";
         empty.appendChild(shopLink);
         content.appendChild(empty);
+
         return;
       }
 
       const layout = makeElement("div", "cart-layout");
       const itemList = makeElement("section", "cart-items");
-      itemList.setAttribute("aria-label", "Items in your cart");
+
+      itemList.setAttribute(
+        "aria-label",
+        "Items in your cart"
+      );
 
       cart.forEach((item, index) => {
         const row = makeElement("article", "cart-row");
         const details = makeElement("div", "");
-        details.appendChild(makeElement("div", "product-name", item.name));
+
+        details.appendChild(
+          makeElement("div", "product-name", item.name)
+        );
 
         if (item.colour) {
           details.appendChild(
-            makeElement("div", "product-meta", "Option: " + item.colour)
+            makeElement(
+              "div",
+              "product-meta",
+              "Option: " + item.colour
+            )
           );
         }
 
         details.appendChild(
-          makeElement("div", "unit-price", money(item.price) + " each")
+          makeElement(
+            "div",
+            "unit-price",
+            money(item.price) + " each"
+          )
         );
 
         const quantityBox = makeElement("div", "");
-        const quantityLabel = makeElement("label", "quantity-label", "Quantity");
+        const quantityLabel = makeElement(
+          "label",
+          "quantity-label",
+          "Quantity"
+        );
+
         const input = makeElement("input", "qty");
 
         input.type = "number";
         input.min = "1";
-        input.max = "20";
+        input.max = "99";
         input.step = "1";
         input.value = item.qty;
         input.inputMode = "numeric";
-        input.setAttribute("aria-label", "Quantity for " + item.name);
+        input.setAttribute(
+          "aria-label",
+          "Quantity for " + item.name
+        );
+
+        quantityLabel.appendChild(input);
+        quantityBox.appendChild(quantityLabel);
 
         input.addEventListener("change", () => {
           const latestCart = readCart();
+
           if (!latestCart[index]) return;
 
           const parsed = Number.parseInt(input.value, 10);
-          latestCart[index].qty = Math.max(1, Math.min(20, parsed || 1));
+
+          latestCart[index].qty = Math.max(
+            1,
+            Math.min(99, parsed || 1)
+          );
+
           saveCart(latestCart);
         });
 
-        quantityBox.append(quantityLabel, input);
-
         const linePrice = makeElement("div", "line-price");
+
         linePrice.appendChild(
           makeElement(
             "strong",
             "",
-            money(Number(item.price) * Number(item.qty))
+            money(Number(item.price) * item.qty)
           )
         );
 
-        const remove = makeElement("button", "remove", "Remove item");
+        const remove = makeElement(
+          "button",
+          "remove",
+          "Remove item"
+        );
+
         remove.type = "button";
-        remove.setAttribute("aria-label", "Remove " + item.name + " from cart");
+        remove.setAttribute(
+          "aria-label",
+          "Remove " + item.name + " from cart"
+        );
 
         remove.addEventListener("click", () => {
           const latestCart = readCart();
-          latestCart.splice(index, 1);
-          saveCart(latestCart);
+
+          // Identify the item by its product ID and variant.
+          const target = cart[index];
+
+          const targetIndex = latestCart.findIndex(saved =>
+            saved.id === target.id &&
+            (saved.variant || saved.colour || "") ===
+              (target.variant || target.colour || "") &&
+            saved.name === target.name
+          );
+
+          if (targetIndex !== -1) {
+            latestCart.splice(targetIndex, 1);
+            saveCart(latestCart);
+          }
         });
 
         linePrice.appendChild(remove);
@@ -489,20 +577,26 @@
       });
 
       const subtotal = cart.reduce(
-        (sum, item) => sum + Number(item.price) * Number(item.qty),
+        (sum, item) =>
+          sum + Number(item.price) * item.qty,
         0
       );
 
       const summary = makeElement("aside", "summary");
-      summary.appendChild(makeElement("h2", "", "Order Summary"));
+
+      summary.appendChild(
+        makeElement("h2", "", "Order Summary")
+      );
 
       const subtotalRow = makeElement("div", "sumline");
+
       subtotalRow.append(
         makeElement("span", "", "Subtotal"),
         makeElement("strong", "", money(subtotal))
       );
 
       const deliveryRow = makeElement("div", "sumline");
+
       deliveryRow.append(
         makeElement("span", "", "Delivery"),
         makeElement("span", "", "To be confirmed")
@@ -519,16 +613,28 @@
       );
 
       const totalRow = makeElement("div", "sumline total");
+
       totalRow.append(
         makeElement("span", "", "Subtotal"),
         makeElement("strong", "", money(subtotal))
       );
+
       summary.appendChild(totalRow);
 
-      const checkoutLink = makeElement("a", "btn", "Continue to Checkout");
+      const checkoutLink = makeElement(
+        "a",
+        "btn",
+        "Continue to Checkout"
+      );
+
       checkoutLink.href = "checkout.html";
 
-      const continueLink = makeElement("a", "btn secondary", "Continue Shopping");
+      const continueLink = makeElement(
+        "a",
+        "btn secondary",
+        "Continue Shopping"
+      );
+
       continueLink.href = "shop.html";
 
       summary.append(checkoutLink, continueLink);
@@ -539,4 +645,5 @@
     renderCart();
   </script>
 </body>
-</html>
+        </html>
+        
