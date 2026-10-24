@@ -2,82 +2,541 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your Cart | Perry Intimates</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#171615;--ivory:#F6F0E8;--gold:#B69A70;--muted:#766F68;--white:#FFFDF9;--line:#E4DBCF}
-*{box-sizing:border-box}
-body{margin:0;background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif}
-a{color:inherit;text-decoration:none}
-.top{background:var(--ink);color:white;text-align:center;padding:10px;font-size:12px;letter-spacing:.08em}
-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 6%;border-bottom:1px solid var(--line)}
-.brand{font:22px 'Playfair Display',serif;letter-spacing:.08em}
-.brand small{display:block;font:10px 'DM Sans',sans-serif;letter-spacing:.22em;text-align:center;color:var(--gold)}
-nav{display:flex;gap:18px;font-size:13px;flex-wrap:wrap}
-main{max-width:960px;margin:auto;padding:45px 6%}
-h1{font:500 clamp(34px,5vw,48px) 'Playfair Display',serif}
-.muted{color:var(--muted)}
-.row{display:grid;grid-template-columns:1fr 90px 120px 70px;gap:14px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
-.row strong{display:block;margin-bottom:6px}
-.qty{width:75px;padding:10px;border:1px solid var(--line);font:inherit}
-.remove{border:0;background:none;text-decoration:underline;cursor:pointer;font:inherit;color:var(--muted)}
-.summary{margin:28px 0 0 auto;max-width:380px;background:var(--ivory);padding:22px}
-.sumline{display:flex;justify-content:space-between;gap:12px;margin:10px 0}
-.btn{display:inline-block;background:var(--ink);color:white;padding:14px 18px;border:1px solid var(--ink);font:600 12px 'DM Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-.secondary{background:transparent;color:var(--ink)}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-footer{background:var(--ink);color:white;padding:26px 6%;font-size:12px}
-@media(max-width:650px){header{padding:16px 5%;flex-wrap:wrap}nav{order:3;width:100%;gap:12px}main{padding:30px 5%}.row{grid-template-columns:1fr 70px;gap:10px}.lineprice{grid-column:1}.brand{font-size:19px}.summary{max-width:none}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171615">
+  <meta name="description" content="Review your Perry Intimates selection before checkout.">
+  <title>Your Cart | Perry Intimates</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #171615;
+      --ivory: #f7f4ee;
+      --gold: #b99a61;
+      --muted: #77716a;
+      --white: #fffdf9;
+      --line: #e7dfd3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .top {
+      padding: 10px;
+      background: var(--ink);
+      color: white;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding: 20px 6%;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 3px;
+      color: var(--gold);
+      font-family: "DM Sans", sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a, .cart-link {
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    nav a:hover, .cart-link:hover { color: var(--gold); }
+
+    main {
+      max-width: 1050px;
+      margin: auto;
+      padding: 42px 6% 75px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    h1, h2 {
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: clamp(36px, 5vw, 50px);
+    }
+
+    .intro {
+      margin: 0 0 30px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      align-items: start;
+      gap: 28px;
+    }
+
+    .cart-items { min-width: 0; }
+
+    .cart-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 90px 115px;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .product-name {
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .product-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .unit-price {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .quantity-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+    }
+
+    .qty {
+      width: 78px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .line-price {
+      font-size: 13px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .remove {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 11px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+
+    .remove:hover { color: var(--ink); }
+
+    .summary {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: var(--ivory);
+    }
+
+    .summary h2 {
+      margin: 0 0 20px;
+      font-size: 25px;
+    }
+
+    .sumline {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 13px 0;
+      font-size: 13px;
+    }
+
+    .sumline.total {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 14px;
+      padding: 15px 12px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: white;
+      font-family: "DM Sans", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #38342e;
+      border-color: #38342e;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn.secondary:hover { background: white; }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .empty {
+      padding: 40px 24px;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .empty h2 { font-size: 27px; }
+
+    .empty p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .empty .btn {
+      max-width: 260px;
+      margin: 22px auto 0;
+    }
+
+    footer {
+      padding: 30px 6%;
+      background: var(--ink);
+      color: #d5cec4;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 20px;
+      margin-bottom: 16px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      header { padding: 18px 5%; }
+      nav { gap: 12px 16px; }
+      main { padding: 30px 5% 55px; }
+
+      .cart-layout { grid-template-columns: 1fr; }
+
+      .cart-row {
+        grid-template-columns: minmax(0, 1fr) 78px;
+        gap: 12px;
+      }
+
+      .line-price {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+      }
+
+      .remove { margin-top: 0; }
+
+      .summary { padding: 21px; }
+    }
+  </style>
 </head>
+
 <body>
-<div class="top">INTIMACY, ELEVATED.</div>
-<header>
-<a class="brand" href="index.html">PERRY INTIMATES<small>INTIMACY, ELEVATED.</small></a>
-<nav><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">Our Story</a><a href="contact.html">Contact</a></nav>
-<a href="cart.html">Cart (<span id="count">0</span>)</a>
-</header>
-<main>
-<p class="muted">YOUR SELECTION</p>
-<h1>Your Cart</h1>
-<div id="items"></div>
-<div id="summary"></div>
-</main>
-<footer>PERRY INTIMATES · Intimacy, Elevated. | perryintimates@gmail.com</footer>
-<script>
-const KEY='perryIntimatesCartV1';
-const money=n=>'₦'+Number(n).toLocaleString('en-NG');
-function readCart(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
-function saveCart(c){localStorage.setItem(KEY,JSON.stringify(c));render()}
-function render(){
- const cart=readCart();
- document.getElementById('count').textContent=cart.reduce((s,i)=>s+i.qty,0);
- const items=document.getElementById('items'),summary=document.getElementById('summary');
- if(!cart.length){
-  items.innerHTML='<p>Your cart is empty.</p><a class="btn" href="shop.html">Continue Shopping</a>';
-  summary.innerHTML='';return;
- }
- items.innerHTML=cart.map((i,n)=>`
- <div class="row">
- <div><strong>${i.name}</strong><span class="muted">Colour: ${i.colour}</span><div class="muted">${money(i.price)} each</div></div>
- <div><label for="q${n}">Qty</label><br><input class="qty" id="q${n}" type="number" min="1" max="20" value="${i.qty}" onchange="changeQty(${n},this.value)"></div>
- <div class="lineprice"><strong>${money(i.price*i.qty)}</strong></div>
- <button class="remove" onclick="removeItem(${n})">Remove</button>
- </div>`).join('');
- const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
- summary.innerHTML=`<div class="summary">
- <div class="sumline"><span>Subtotal</span><strong>${money(total)}</strong></div>
- <div class="sumline"><span>Delivery</span><span>To be confirmed</span></div>
- <p class="muted" style="font-size:12px;line-height:1.6">Delivery cost depends on your destination and will be confirmed before payment.</p>
- <div class="actions"><a class="btn secondary" href="shop.html">Continue Shopping</a><a class="btn" href="checkout.html">Proceed to Checkout</a></div>
- </div>`;
-}
-function changeQty(n,value){const c=readCart();c[n].qty=Math.max(1,Math.min(20,parseInt(value,10)||1));saveCart(c)}
-function removeItem(n){const c=readCart();c.splice(n,1);saveCart(c)}
-render();
-</script>
+  <div class="top">INTIMACY, ELEVATED.</div>
+
+  <header>
+    <a class="brand" href="index.html">
+      PERRY INTIMATES
+      <small>INTIMACY, ELEVATED.</small>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">Our Story</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <a class="cart-link" href="cart.html">
+      Cart (<span id="count">0</span>)
+    </a>
+  </header>
+
+  <main>
+    <div class="eyebrow">YOUR SELECTION</div>
+    <h1>Your Cart</h1>
+    <p class="intro">
+      Review your selected items and quantities before continuing to checkout.
+    </p>
+
+    <div id="cart-content" aria-live="polite"></div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+      <a href="shipping.html">Shipping</a>
+      <a href="returns.html">Returns</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    PERRY INTIMATES · INTIMACY, ELEVATED.<br>
+    <a href="mailto:perryintimates@gmail.com">perryintimates@gmail.com</a>
+  </footer>
+
+  <script>
+    const CART_KEY = "perryIntimatesCartV1";
+    const money = amount =>
+      "₦" + Number(amount).toLocaleString("en-NG");
+
+    function readCart() {
+      try {
+        const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+        if (!Array.isArray(cart)) return [];
+
+        return cart.filter(item =>
+          item &&
+          typeof item.name === "string" &&
+          Number.isFinite(Number(item.price)) &&
+          Number(item.price) >= 0 &&
+          Number.isInteger(Number(item.qty)) &&
+          Number(item.qty) >= 1
+        );
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      renderCart();
+    }
+
+    function makeElement(tag, className, text) {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      if (text !== undefined) element.textContent = text;
+      return element;
+    }
+
+    function renderCart() {
+      const cart = readCart();
+      const content = document.getElementById("cart-content");
+      const count = cart.reduce((sum, item) => sum + Number(item.qty), 0);
+
+      document.getElementById("count").textContent = count;
+      content.replaceChildren();
+
+      if (cart.length === 0) {
+        const empty = makeElement("section", "empty");
+        empty.append(
+          makeElement("h2", "", "Your cart is empty"),
+          makeElement("p", "", "You haven't added any products yet.")
+        );
+
+        const shopLink = makeElement("a", "btn", "Explore the Collection");
+        shopLink.href = "shop.html";
+        empty.appendChild(shopLink);
+        content.appendChild(empty);
+        return;
+      }
+
+      const layout = makeElement("div", "cart-layout");
+      const itemList = makeElement("section", "cart-items");
+      itemList.setAttribute("aria-label", "Items in your cart");
+
+      cart.forEach((item, index) => {
+        const row = makeElement("article", "cart-row");
+        const details = makeElement("div", "");
+        details.appendChild(makeElement("div", "product-name", item.name));
+
+        if (item.colour) {
+          details.appendChild(
+            makeElement("div", "product-meta", "Option: " + item.colour)
+          );
+        }
+
+        details.appendChild(
+          makeElement("div", "unit-price", money(item.price) + " each")
+        );
+
+        const quantityBox = makeElement("div", "");
+        const quantityLabel = makeElement("label", "quantity-label", "Quantity");
+        const input = makeElement("input", "qty");
+
+        input.type = "number";
+        input.min = "1";
+        input.max = "20";
+        input.step = "1";
+        input.value = item.qty;
+        input.inputMode = "numeric";
+        input.setAttribute("aria-label", "Quantity for " + item.name);
+
+        input.addEventListener("change", () => {
+          const latestCart = readCart();
+          if (!latestCart[index]) return;
+
+          const parsed = Number.parseInt(input.value, 10);
+          latestCart[index].qty = Math.max(1, Math.min(20, parsed || 1));
+          saveCart(latestCart);
+        });
+
+        quantityBox.append(quantityLabel, input);
+
+        const linePrice = makeElement("div", "line-price");
+        linePrice.appendChild(
+          makeElement(
+            "strong",
+            "",
+            money(Number(item.price) * Number(item.qty))
+          )
+        );
+
+        const remove = makeElement("button", "remove", "Remove item");
+        remove.type = "button";
+        remove.setAttribute("aria-label", "Remove " + item.name + " from cart");
+
+        remove.addEventListener("click", () => {
+          const latestCart = readCart();
+          latestCart.splice(index, 1);
+          saveCart(latestCart);
+        });
+
+        linePrice.appendChild(remove);
+        row.append(details, quantityBox, linePrice);
+        itemList.appendChild(row);
+      });
+
+      const subtotal = cart.reduce(
+        (sum, item) => sum + Number(item.price) * Number(item.qty),
+        0
+      );
+
+      const summary = makeElement("aside", "summary");
+      summary.appendChild(makeElement("h2", "", "Order Summary"));
+
+      const subtotalRow = makeElement("div", "sumline");
+      subtotalRow.append(
+        makeElement("span", "", "Subtotal"),
+        makeElement("strong", "", money(subtotal))
+      );
+
+      const deliveryRow = makeElement("div", "sumline");
+      deliveryRow.append(
+        makeElement("span", "", "Delivery"),
+        makeElement("span", "", "To be confirmed")
+      );
+
+      summary.append(subtotalRow, deliveryRow);
+
+      summary.appendChild(
+        makeElement(
+          "p",
+          "muted",
+          "Delivery charges depend on your destination and will be confirmed before payment."
+        )
+      );
+
+      const totalRow = makeElement("div", "sumline total");
+      totalRow.append(
+        makeElement("span", "", "Subtotal"),
+        makeElement("strong", "", money(subtotal))
+      );
+      summary.appendChild(totalRow);
+
+      const checkoutLink = makeElement("a", "btn", "Continue to Checkout");
+      checkoutLink.href = "checkout.html";
+
+      const continueLink = makeElement("a", "btn secondary", "Continue Shopping");
+      continueLink.href = "shop.html";
+
+      summary.append(checkoutLink, continueLink);
+      layout.append(itemList, summary);
+      content.appendChild(layout);
+    }
+
+    renderCart();
+  </script>
 </body>
-                            </html>
-  
+</html>
