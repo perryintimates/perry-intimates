@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Cart | Perry Intimates</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171615;--ivory:#F6F0E8;--gold:#B69A70;--muted:#766F68;--white:#FFFDF9;--line:#E4DBCF}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif}
+a{color:inherit;text-decoration:none}
+.top{background:var(--ink);color:white;text-align:center;padding:10px;font-size:12px;letter-spacing:.08em}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 6%;border-bottom:1px solid var(--line)}
+.brand{font:22px 'Playfair Display',serif;letter-spacing:.08em}
+.brand small{display:block;font:10px 'DM Sans',sans-serif;letter-spacing:.22em;text-align:center;color:var(--gold)}
+nav{display:flex;gap:18px;font-size:13px;flex-wrap:wrap}
+main{max-width:960px;margin:auto;padding:45px 6%}
+h1{font:500 clamp(34px,5vw,48px) 'Playfair Display',serif}
+.muted{color:var(--muted)}
+.row{display:grid;grid-template-columns:1fr 90px 120px 70px;gap:14px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.row strong{display:block;margin-bottom:6px}
+.qty{width:75px;padding:10px;border:1px solid var(--line);font:inherit}
+.remove{border:0;background:none;text-decoration:underline;cursor:pointer;font:inherit;color:var(--muted)}
+.summary{margin:28px 0 0 auto;max-width:380px;background:var(--ivory);padding:22px}
+.sumline{display:flex;justify-content:space-between;gap:12px;margin:10px 0}
+.btn{display:inline-block;background:var(--ink);color:white;padding:14px 18px;border:1px solid var(--ink);font:600 12px 'DM Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.secondary{background:transparent;color:var(--ink)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+footer{background:var(--ink);color:white;padding:26px 6%;font-size:12px}
+@media(max-width:650px){header{padding:16px 5%;flex-wrap:wrap}nav{order:3;width:100%;gap:12px}main{padding:30px 5%}.row{grid-template-columns:1fr 70px;gap:10px}.lineprice{grid-column:1}.brand{font-size:19px}.summary{max-width:none}}
+</style>
+</head>
+<body>
+<div class="top">INTIMACY, ELEVATED.</div>
+<header>
+<a class="brand" href="index.html">PERRY INTIMATES<small>INTIMACY, ELEVATED.</small></a>
+<nav><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">Our Story</a><a href="contact.html">Contact</a></nav>
+<a href="cart.html">Cart (<span id="count">0</span>)</a>
+</header>
+<main>
+<p class="muted">YOUR SELECTION</p>
+<h1>Your Cart</h1>
+<div id="items"></div>
+<div id="summary"></div>
+</main>
+<footer>PERRY INTIMATES · Intimacy, Elevated. | perryintimates@gmail.com</footer>
+<script>
+const KEY='perryIntimatesCartV1';
+const money=n=>'₦'+Number(n).toLocaleString('en-NG');
+function readCart(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
+function saveCart(c){localStorage.setItem(KEY,JSON.stringify(c));render()}
+function render(){
+ const cart=readCart();
+ document.getElementById('count').textContent=cart.reduce((s,i)=>s+i.qty,0);
+ const items=document.getElementById('items'),summary=document.getElementById('summary');
+ if(!cart.length){
+  items.innerHTML='<p>Your cart is empty.</p><a class="btn" href="shop.html">Continue Shopping</a>';
+  summary.innerHTML='';return;
+ }
+ items.innerHTML=cart.map((i,n)=>`
+ <div class="row">
+ <div><strong>${i.name}</strong><span class="muted">Colour: ${i.colour}</span><div class="muted">${money(i.price)} each</div></div>
+ <div><label for="q${n}">Qty</label><br><input class="qty" id="q${n}" type="number" min="1" max="20" value="${i.qty}" onchange="changeQty(${n},this.value)"></div>
+ <div class="lineprice"><strong>${money(i.price*i.qty)}</strong></div>
+ <button class="remove" onclick="removeItem(${n})">Remove</button>
+ </div>`).join('');
+ const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+ summary.innerHTML=`<div class="summary">
+ <div class="sumline"><span>Subtotal</span><strong>${money(total)}</strong></div>
+ <div class="sumline"><span>Delivery</span><span>To be confirmed</span></div>
+ <p class="muted" style="font-size:12px;line-height:1.6">Delivery cost depends on your destination and will be confirmed before payment.</p>
+ <div class="actions"><a class="btn secondary" href="shop.html">Continue Shopping</a><a class="btn" href="checkout.html">Proceed to Checkout</a></div>
+ </div>`;
+}
+function changeQty(n,value){const c=readCart();c[n].qty=Math.max(1,Math.min(20,parseInt(value,10)||1));saveCart(c)}
+function removeItem(n){const c=readCart();c.splice(n,1);saveCart(c)}
+render();
+</script>
+</body>
+                            </html>
+  
